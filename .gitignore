@@ -232,3 +232,19 @@ data/ddinter_raw/
 # Sphinx build
 /docs/build/
 /docs/source/api/
+
+# platform/ install scripts live under platform/lib, which the generic lib/ rule hides.
+!platform/lib/
+!platform/lib/**
+platform/lib/__pycache__/
+
+# Tiny validation inputs live under a directory named data, which the generic data rule hides.
+!platform/validation/data/
+!platform/validation/data/**
+
+# Local source builds, conda symlinks, and generated validation output.
+platform/biomni_tools/
+platform/linux-arm/cli_install_report.json
+platform/validation/reports/
+platform/validation/fixtures/
+platform/validation/tags.json

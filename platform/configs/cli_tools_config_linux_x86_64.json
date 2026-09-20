@@ -1,0 +1,59 @@
+{
+  "platform": "linux_x86_64",
+  "description": "CLI install plan for Linux x86_64 (upstream default). Skeleton only — not executed or validated on arm64 hosts.",
+  "tools": [
+    {
+      "name": "PLINK 2.0",
+      "binary": "plink2",
+      "method": "download",
+      "url": "https://s3.amazonaws.com/plink2-assets/alpha6/plink2_linux_avx2_20250129.zip",
+      "binary_path": "plink2",
+      "version_args": ["--version"]
+    },
+    {
+      "name": "IQ-TREE",
+      "binary": "iqtree2",
+      "method": "download",
+      "url": "https://github.com/iqtree/iqtree2/releases/download/v2.2.2.7/iqtree-2.2.2.7-Linux.tar.gz",
+      "binary_path": "iqtree2",
+      "version_args": ["--version"]
+    },
+    {
+      "name": "GCTA",
+      "binary": "gcta64",
+      "method": "download",
+      "url": "https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.4-linux-kernel-3-x86_64.zip",
+      "binary_path": "gcta64",
+      "version_args": []
+    },
+    {
+      "name": "BWA",
+      "binary": "bwa",
+      "method": "source_git",
+      "url": "https://github.com/lh3/bwa.git",
+      "version_args": []
+    },
+    {
+      "name": "FastTree",
+      "binary": "FastTree",
+      "method": "download",
+      "url": "https://morgannprice.github.io/fasttree/FastTree.c",
+      "binary_path": "FastTree",
+      "version_args": ["-help"]
+    },
+    {
+      "name": "MUSCLE",
+      "binary": "muscle",
+      "method": "download",
+      "url": "https://github.com/rcedgar/muscle/releases/download/v5.3/muscle-linux-x86.v5.3",
+      "binary_path": "muscle",
+      "version_args": ["-version"]
+    },
+    {
+      "name": "HOMER",
+      "binary": "findMotifs.pl",
+      "method": "skip",
+      "reason": "Use upstream biomni_env/install_cli_tools.sh HOMER flow on x86 hosts if needed"
+    }
+  ]
+}

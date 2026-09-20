@@ -1,0 +1,123 @@
+{
+  "platform": "linux_aarch64",
+  "description": "CLI install plan for Linux aarch64. Compilable tools use source_build. ADFRsuite autosite is not built.",
+  "tools": [
+    {
+      "name": "MUSCLE",
+      "binary": "muscle",
+      "method": "conda",
+      "packages": ["muscle"],
+      "channels": ["bioconda", "conda-forge"],
+      "version_args": ["-version"]
+    },
+    {
+      "name": "IQ-TREE",
+      "binary": "iqtree",
+      "aliases": ["iqtree2"],
+      "method": "conda",
+      "packages": ["iqtree"],
+      "channels": ["bioconda", "conda-forge"],
+      "version_args": ["--version"]
+    },
+    {
+      "name": "PLINK 1.9",
+      "binary": "plink",
+      "method": "conda",
+      "packages": ["plink"],
+      "channels": ["bioconda", "conda-forge"],
+      "version_args": ["--version"]
+    },
+    {
+      "name": "BWA",
+      "binary": "bwa",
+      "method": "conda",
+      "packages": ["bwa"],
+      "channels": ["bioconda", "conda-forge"],
+      "version_args": [],
+      "fallback": {
+        "name": "BWA",
+        "binary": "bwa",
+        "method": "source_build",
+        "repo_url": "https://github.com/lh3/bwa.git",
+        "src_dirname": "bwa",
+        "build_subdir": ".",
+        "build_cmd": "make -j$(nproc)",
+        "artifact": "bwa",
+        "version_args": []
+      }
+    },
+    {
+      "name": "PLINK 2.0",
+      "binary": "plink2",
+      "method": "source_build",
+      "repo_url": "https://github.com/chrchang/plink-ng.git",
+      "src_dirname": "plink-ng",
+      "build_subdir": "2.0/build_dynamic",
+      "build_cmd": "make -j$(nproc)",
+      "artifact": "plink2",
+      "version_args": ["--version"],
+      "conda_deps": ["zlib", "openblas", "lapack"]
+    },
+    {
+      "name": "GCTA",
+      "binary": "gcta64",
+      "method": "source_build",
+      "repo_url": "https://github.com/jianyangqt/gcta.git",
+      "src_dirname": "gcta",
+      "build_subdir": ".",
+      "build_cmd": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j$(nproc)",
+      "artifact": "gcta64",
+      "version_args": [],
+      "conda_deps": ["cmake", "zlib", "eigen", "boost-cpp"]
+    },
+    {
+      "name": "FastTree",
+      "binary": "FastTree",
+      "method": "source_build",
+      "source_url": "https://morgannprice.github.io/fasttree/FastTree.c",
+      "src_dirname": "fasttree",
+      "build_subdir": ".",
+      "build_cmd": "gcc -O3 -finline-functions -funroll-loops -o FastTree FastTree.c -lm",
+      "artifact": "FastTree",
+      "version_args": ["-help"]
+    },
+    {
+      "name": "AutoDock Vina",
+      "binary": "vina",
+      "method": "source_build",
+      "repo_url": "https://github.com/ccsb-scripps/AutoDock-Vina.git",
+      "archive_url": "https://codeload.github.com/ccsb-scripps/AutoDock-Vina/tar.gz/refs/heads/develop",
+      "src_dirname": "AutoDock-Vina",
+      "build_subdir": "build/linux/release",
+      "build_cmd": "make -j$(nproc)",
+      "artifact": "vina",
+      "version_args": ["--version"],
+      "conda_deps": ["cmake"]
+    },
+    {
+      "name": "fpocket",
+      "binary": "fpocket",
+      "method": "source_build",
+      "repo_url": "https://github.com/Discngine/fpocket.git",
+      "archive_url": "https://codeload.github.com/Discngine/fpocket/tar.gz/refs/heads/master",
+      "src_dirname": "fpocket",
+      "build_subdir": ".",
+      "build_cmd": "perl -pi -e 's/\\bclang\\b/gcc/g' makefile src/qhull/Makefile; perl -pi -e 's/^CFLAGS\\s+=/CFLAGS = -fpermissive /' makefile; rm -rf obj && mkdir -p obj && gcc -c -o obj/molfile_stubs.o ../../../lib/fpocket_molfile_stubs.c && perl -pi -e 's/^LFLAGS\\s+=.*/LFLAGS = -lm -lstdc++ obj\\/molfile_stubs.o/' makefile && make -j$(nproc)",
+      "artifact": "bin/fpocket",
+      "version_args": ["-h"],
+      "reason": "arm64 pocket detection used instead of ADFRsuite autosite; no bioconda aarch64 package"
+    },
+    {
+      "name": "HOMER",
+      "binary": "findMotifs.pl",
+      "method": "skip",
+      "reason": "HOMER configureHomer.pl is Perl-based and not verified on linux-aarch64 in this pass"
+    },
+    {
+      "name": "ADFRsuite autosite",
+      "binary": "autosite",
+      "method": "skip",
+      "reason": "x86-only ADFRsuite; arm64 uses fpocket + Meeko via platform override, not a source build"
+    }
+  ]
+}

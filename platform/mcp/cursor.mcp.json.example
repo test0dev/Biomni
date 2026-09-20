@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "biomni": {
+      "command": "bash",
+      "args": [
+        "-lc",
+        "source \"$HOME/miniconda3/etc/profile.d/conda.sh\" && conda activate biomni_e1 && source \"/home/fv/work/biomni-refactory/biomni-arm/platform/setup_path.sh\" && python \"/home/fv/work/biomni-refactory/biomni-arm/tutorials/examples/expose_biomni_server/run_mcp_server.py\""
+      ]
+    }
+  }
+}
