@@ -53,7 +53,7 @@
       "repo_url": "https://github.com/chrchang/plink-ng.git",
       "src_dirname": "plink-ng",
       "build_subdir": "2.0/build_dynamic",
-      "build_cmd": "make -j$(nproc)",
+      "build_cmd": "env -u CC -u CXX -u CFLAGS -u CXXFLAGS -u CPPFLAGS -u LDFLAGS -u LIBRARY_PATH -u CPATH CC=/usr/bin/gcc CXX=/usr/bin/g++ make clean && env -u CC -u CXX -u CFLAGS -u CXXFLAGS -u CPPFLAGS -u LDFLAGS -u LIBRARY_PATH -u CPATH CC=/usr/bin/gcc CXX=/usr/bin/g++ make -j$(nproc) BLASFLAGS=\"-L/usr/lib/aarch64-linux-gnu -llapacke -llapack -lopenblas\"",
       "artifact": "plink2",
       "version_args": ["--version"],
       "conda_deps": ["zlib", "openblas", "lapack"]
@@ -65,10 +65,10 @@
       "repo_url": "https://github.com/jianyangqt/gcta.git",
       "src_dirname": "gcta",
       "build_subdir": ".",
-      "build_cmd": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j$(nproc)",
+      "build_cmd": "bash ../../../lib/patch_gcta_lapack.sh && test -f third_party/spectra/include/Spectra/SymEigsSolver.h || { mkdir -p third_party && curl --http1.1 -fL --retry 3 -o /tmp/spectra-src.tgz https://codeload.github.com/yixuan/spectra/tar.gz/refs/tags/v1.0.1 && rm -rf third_party/spectra && tar -xzf /tmp/spectra-src.tgz -C third_party && mv third_party/spectra-* third_party/spectra; }; git -c http.version=HTTP/1.1 submodule update --init --depth 1; mkdir -p third_party/openblas/include third_party/openblas/lib && ln -sfn /usr/include/aarch64-linux-gnu/cblas.h third_party/openblas/include/cblas.h && ln -sfn /usr/include/aarch64-linux-gnu/openblas_config.h third_party/openblas/include/openblas_config.h && ln -sfn /usr/lib/aarch64-linux-gnu/libopenblas.so third_party/openblas/lib/libopenblas.so; export EIGEN3_INCLUDE_DIR=/usr/include/eigen3 BOOST_LIB=/usr/include OPENBLAS=\"$PWD/third_party/openblas\" SPECTRA_LIB=\"$PWD/third_party/spectra/include\"; rm -rf build && env -u CC -u CXX -u CFLAGS -u CXXFLAGS -u CPPFLAGS -u LDFLAGS -u CMAKE_ARGS -u CMAKE_PREFIX_PATH -u LIBRARY_PATH -u CPATH CC=/usr/bin/gcc CXX=/usr/bin/g++ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ && cmake --build build -j$(nproc)",
       "artifact": "gcta64",
       "version_args": [],
-      "conda_deps": ["cmake", "zlib", "eigen", "boost-cpp"]
+      "conda_deps": ["cmake", "zlib", "eigen"]
     },
     {
       "name": "FastTree",

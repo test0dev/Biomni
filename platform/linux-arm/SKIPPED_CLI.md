@@ -7,7 +7,7 @@ See also `cli_install_report.json`.
 | Tool | How |
 |---|---|
 | plink2 | `chrchang/plink-ng` `2.0/build_dynamic` |
-| gcta64 | `jianyangqt/gcta` cmake |
+| gcta64 | `jianyangqt/gcta` cmake; system Boost/Eigen, conda OpenBLAS, Spectra headers. Do not conda-install `boost-cpp` (conflicts with rdkit) |
 | FastTree | compile `FastTree.c` |
 | vina | `ccsb-scripps/AutoDock-Vina` `build/linux/release` Makefile |
 | fpocket | `Discngine/fpocket` with gcc; bundled molfile `.a` is x86, so PDB pocket detection is linked against no-op stubs (`platform/lib/fpocket_molfile_stubs.c`). mmCIF and MD trajectory plugins are not functional |
