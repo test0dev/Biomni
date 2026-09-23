@@ -1,0 +1,9 @@
+{
+  "name": "biomni-arm-mcp-verify",
+  "private": true,
+  "type": "module",
+  "description": "stdio MCP client that lists all Biomni tools and calls one lake-backed tool",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  }
+}

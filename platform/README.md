@@ -62,5 +62,46 @@ Docker GPU checks are non-blocking when host CUDA works (`VAL_SKIP_DOCKER=1` to 
 
 ## MCP
 
-See `mcp/cursor.mcp.json.example` — points at upstream  
-`tutorials/examples/expose_biomni_server/run_mcp_server.py`.
+Full-tool stdio server for external clients (Mastra, etc.):
+
+```bash
+# server (all tools; reuses ~/biomni-data-lake)
+source platform/setup_path.sh
+python tutorials/examples/expose_biomni_server/run_mcp_server.py
+
+# Node client smoke test
+cd platform/mcp && npm install && node verify_mcp.mjs
+```
+
+`BIOMNI_DATA_LAKE_PATH` overrides the lake root (default `~/biomni-data-lake`).
+
+`MCP_TRANSPORT=http` (or `streamable-http`) starts FastMCP on `MCP_HOST`/`MCP_PORT` (defaults `0.0.0.0:8000`). Default remains `stdio` for the Node verifier above.
+
+Tool access inventory (static classification of the MCP/`module2api` surface):
+
+- [`platform/mcp/tools_remote.json`](mcp/tools_remote.json) — needs remote HTTP/API/network during execution
+- [`platform/mcp/tools_local.json`](mcp/tools_local.json) — local compute and/or local data lake / files
+- [`platform/mcp/tools_gpu.json`](mcp/tools_gpu.json) — `requires_gpu` vs CPU-viable tools (used by MCP profiles)
+
+`BIOMNI_MCP_TOOL_PROFILE` filters tools at MCP start: `all` (default), `cpu` (exclude `requires_gpu`), `gpu` (only `requires_gpu`).
+
+## Docker multi-Pod
+
+Image packs `biomni_e1` + this repo into `/app`. Host only mounts the data lake read-only; per-user state is a Docker volume on `/app/tmp`.
+
+```bash
+# once: pack env + build (needs conda-pack on the host)
+conda-pack -n biomni_e1 -o platform/docker/.cache/biomni_e1.tar.gz \
+  --n-threads -1 --ignore-editable-packages --ignore-missing-files
+bash platform/docker/build.sh
+
+# lake: prefer /data/lake; otherwise ~/biomni-data-lake (or BIOMNI_LAKE_HOST=...)
+# Split across hosts: x86 without GPU tools vs CUDA with GPU-only tools
+bash platform/docker/run_pod_cpu.sh userA       # no --gpus; profile=cpu
+bash platform/docker/run_pod_gpu.sh userB       # --gpus all; profile=gpu
+
+# Or full tool surface (legacy):
+bash platform/docker/run_pod.sh userC           # --gpus all; profile=all
+```
+
+Ports are in 5000–6000. Omit the port to take max(used)+1. `run_pod_gpu.sh` / default `run_pod.sh` use `--gpus all` with no CPU/memory caps; `run_pod_cpu.sh` omits GPU devices.

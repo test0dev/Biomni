@@ -1,0 +1,3306 @@
+{
+  "access": "local",
+  "generated_at": "2026-09-23T06:26:32Z",
+  "count": 161,
+  "description": "MCP tools that run against local compute and/or local data lake / files without a required remote API call in their implementation.",
+  "names": [
+    "align_sequences",
+    "analyze_abr_waveform_p1_metrics",
+    "analyze_accelerated_stability_of_pharmaceutical_formulations",
+    "analyze_aortic_diameter_and_geometry",
+    "analyze_arsenic_speciation_hplc_icpms",
+    "analyze_atac_seq_differential_accessibility",
+    "analyze_atp_luminescence_assay",
+    "analyze_bacterial_growth_curve",
+    "analyze_bacterial_growth_rate",
+    "analyze_barcode_sequencing_data",
+    "analyze_bifurcation_diagram",
+    "analyze_bone_microct_morphometry",
+    "analyze_calcium_imaging_data",
+    "analyze_cas9_mutation_outcomes",
+    "analyze_cell_migration_metrics",
+    "analyze_cell_morphology_and_cytoskeleton",
+    "analyze_cell_senescence_and_apoptosis",
+    "analyze_cfse_cell_proliferation",
+    "analyze_chromatin_interactions",
+    "analyze_ciliary_beat_frequency",
+    "analyze_circular_dichroism_spectra",
+    "analyze_cns_lesion_histology",
+    "analyze_comparative_genomics_and_haplotypes",
+    "analyze_copy_number_purity_ploidy_and_focal_events",
+    "analyze_crispr_genome_editing",
+    "analyze_cytokine_production_in_cd4_tcells",
+    "analyze_ddr_network_in_cancer",
+    "analyze_ebv_antibody_titers",
+    "analyze_endolysosomal_calcium_dynamics",
+    "analyze_enzyme_kinetics_assay",
+    "analyze_fatty_acid_composition_by_gc",
+    "analyze_fda_safety_signals",
+    "analyze_flow_cytometry_immunophenotyping",
+    "analyze_genomic_region_overlap",
+    "analyze_hemodynamic_data",
+    "analyze_immunohistochemistry_image",
+    "analyze_in_vitro_drug_release_kinetics",
+    "analyze_interaction_mechanisms",
+    "analyze_intracellular_calcium_with_rhod2",
+    "analyze_itc_binding_thermodynamics",
+    "analyze_mitochondrial_morphology_and_potential",
+    "analyze_myofiber_morphology",
+    "analyze_pixel_distribution",
+    "analyze_protease_kinetics",
+    "analyze_protein_colocalization",
+    "analyze_protein_conservation",
+    "analyze_protein_phylogeny",
+    "analyze_radiolabeled_antibody_biodistribution",
+    "analyze_rna_secondary_structure_features",
+    "analyze_thrombus_histology",
+    "analyze_western_blot",
+    "analyze_xenograft_tumor_growth_inhibition",
+    "annotate_bacterial_genome",
+    "annotate_celltype_scRNA",
+    "annotate_open_reading_frames",
+    "annotate_plasmid",
+    "batch_register_images",
+    "bayesian_finemapping_with_deep_vi",
+    "calculate_brain_adc_map",
+    "calculate_physicochemical_properties",
+    "calculate_similarity_metrics",
+    "check_drug_combination_safety",
+    "check_fda_drug_recalls",
+    "compare_protein_structures",
+    "count_bacterial_colonies",
+    "create_biochemical_network_sbml_model",
+    "create_scvi_embeddings_scRNA",
+    "create_segmentation_visualization",
+    "decode_behavior_from_neural_trajectories",
+    "design_golden_gate_oligos",
+    "design_knockout_sgrna",
+    "design_primer",
+    "design_verification_primers",
+    "detect_and_annotate_somatic_mutations",
+    "detect_and_characterize_structural_variations",
+    "digest_sequence",
+    "docking_autodock_vina",
+    "download_synapse_data",
+    "engineer_bacterial_genome_for_therapeutic_delivery",
+    "enumerate_bacterial_cfu_by_serial_dilution",
+    "estimate_alpha_particle_radiotherapy_dosimetry",
+    "estimate_cell_cycle_phase_durations",
+    "find_alternative_drugs_ddinter",
+    "find_enriched_motifs_with_homer",
+    "find_n_glycosylation_motifs",
+    "find_restriction_enzymes",
+    "find_restriction_sites",
+    "find_roi_from_image",
+    "find_sequence_mutations",
+    "fit_genomic_prediction_model",
+    "gene_set_enrichment_analysis",
+    "generate_gene_embeddings_with_ESM_models",
+    "generate_transcriptformer_embeddings",
+    "get_bacterial_transformation_protocol",
+    "get_fda_drug_label_info",
+    "get_gene_set_enrichment_analysis_supported_database_list",
+    "get_golden_gate_assembly_protocol",
+    "get_oligo_annealing_protocol",
+    "get_pylabrobot_documentation_liquid",
+    "get_pylabrobot_documentation_material",
+    "get_rna_seq_archs4",
+    "golden_gate_assembly",
+    "grade_adverse_events_using_vcog_ctcae",
+    "isolate_purify_immune_cells",
+    "liftover_coordinates",
+    "list_local_protocols",
+    "map_to_ima_interpret_scRNA",
+    "model_bacterial_growth_dynamics",
+    "model_protein_dimerization_network",
+    "optimize_anaerobic_digestion_process",
+    "optimize_codons_for_heterologous_expression",
+    "pcr_simple",
+    "perform_chipseq_peak_calling_with_macs2",
+    "perform_cosinor_analysis",
+    "perform_crispr_cas9_genome_editing",
+    "perform_facs_cell_sorting",
+    "perform_flux_balance_analysis",
+    "perform_gene_expression_nmf_analysis",
+    "perform_mwas_cyp2c19_metabolizer_status",
+    "perform_pcr_and_gel_electrophoresis",
+    "predict_admet_properties",
+    "predict_binding_affinity_protein_1d_sequence",
+    "predict_o_glycosylation_hotspots",
+    "predict_rna_secondary_structure",
+    "prepare_input_for_nnunet",
+    "quantify_amyloid_beta_plaques",
+    "quantify_and_cluster_cell_motility",
+    "quantify_biofilm_biomass_crystal_violet",
+    "quantify_cell_cycle_phases_from_microscopy",
+    "quantify_corneal_nerve_fibers",
+    "query_chatnt",
+    "query_drug_interactions",
+    "query_fda_adverse_events",
+    "quick_affine_registration",
+    "quick_deformable_registration",
+    "quick_rigid_registration",
+    "read_function_source_code",
+    "read_local_protocol",
+    "reconstruct_3d_face_from_mri",
+    "retrieve_topk_repurposing_drugs_from_disease_txgnn",
+    "run_3d_chondrogenic_aggregate_assay",
+    "run_autosite",
+    "run_diffdock_with_smiles",
+    "run_python_repl",
+    "segment_and_analyze_microbial_cells",
+    "segment_and_quantify_cells_in_multiplexed_images",
+    "segment_cells_with_deep_learning",
+    "segment_with_nn_unet",
+    "simulate_demographic_history",
+    "simulate_gene_circuit_with_growth_feedback",
+    "simulate_generalized_lotka_volterra_dynamics",
+    "simulate_metabolic_network_perturbation",
+    "simulate_microbial_population_dynamics",
+    "simulate_protein_signaling_network",
+    "simulate_renin_angiotensin_system_dynamics",
+    "simulate_thyroid_hormone_pharmacokinetics",
+    "simulate_whole_cell_ode_model",
+    "split_modalities",
+    "test_pylabrobot_script",
+    "track_immune_cells_under_flow",
+    "unsupervised_celltype_transfer_between_scRNA_datasets"
+  ],
+  "tools": [
+    {
+      "name": "analyze_circular_dichroism_spectra",
+      "module": "biomni.tool.biochemistry",
+      "description": "Analyzes circular dichroism (CD) spectroscopy data to determine secondary structure and thermal stability.",
+      "required_parameters": [
+        "sample_name",
+        "sample_type",
+        "wavelength_data",
+        "cd_signal_data"
+      ],
+      "optional_parameters": [
+        "temperature_data",
+        "thermal_cd_data",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_enzyme_kinetics_assay",
+      "module": "biomni.tool.biochemistry",
+      "description": "Performs in vitro enzyme kinetics assay and analyzes the dose-dependent effects of modulators.",
+      "required_parameters": [
+        "enzyme_name",
+        "substrate_concentrations",
+        "enzyme_concentration"
+      ],
+      "optional_parameters": [
+        "modulators",
+        "time_points",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_itc_binding_thermodynamics",
+      "module": "biomni.tool.biochemistry",
+      "description": "Analyzes isothermal titration calorimetry (ITC) data to determine binding affinity and thermodynamic parameters.",
+      "required_parameters": [],
+      "optional_parameters": [
+        "itc_data_path",
+        "itc_data",
+        "temperature",
+        "protein_concentration",
+        "ligand_concentration"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_protease_kinetics",
+      "module": "biomni.tool.biochemistry",
+      "description": "Analyze protease kinetics data from fluorogenic peptide cleavage assays, fit the data to Michaelis-Menten kinetics, and determine key kinetic parameters.",
+      "required_parameters": [
+        "time_points",
+        "fluorescence_data",
+        "substrate_concentrations",
+        "enzyme_concentration"
+      ],
+      "optional_parameters": [
+        "output_prefix",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_protein_conservation",
+      "module": "biomni.tool.biochemistry",
+      "description": "Perform multiple sequence alignment and phylogenetic analysis to identify conserved protein regions.",
+      "required_parameters": [
+        "protein_sequences"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_rna_secondary_structure_features",
+      "module": "biomni.tool.biochemistry",
+      "description": "Calculate numeric values for various structural features of an RNA secondary structure.",
+      "required_parameters": [
+        "dot_bracket_structure"
+      ],
+      "optional_parameters": [
+        "sequence"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_calcium_imaging_data",
+      "module": "biomni.tool.bioengineering",
+      "description": "Analyze calcium imaging data to quantify neuronal activity metrics including cell counts, event rates, decay times, and signal-to-noise ratios.",
+      "required_parameters": [
+        "image_stack_path"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_cell_migration_metrics",
+      "module": "biomni.tool.bioengineering",
+      "description": "Analyze cell migration metrics from time-lapse microscopy images.",
+      "required_parameters": [
+        "image_sequence_path"
+      ],
+      "optional_parameters": [
+        "pixel_size_um",
+        "time_interval_min",
+        "min_track_length",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_in_vitro_drug_release_kinetics",
+      "module": "biomni.tool.bioengineering",
+      "description": "Analyzes in vitro drug release kinetics from biomaterial formulations.",
+      "required_parameters": [
+        "time_points",
+        "concentration_data"
+      ],
+      "optional_parameters": [
+        "drug_name",
+        "total_drug_loaded",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_myofiber_morphology",
+      "module": "biomni.tool.bioengineering",
+      "description": "Quantifies morphological properties of myofibers in microscopy images of tissue sections.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "nuclei_channel",
+        "myofiber_channel",
+        "threshold_method",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "decode_behavior_from_neural_trajectories",
+      "module": "biomni.tool.bioengineering",
+      "description": "Model neural activity trajectories and decode behavioral variables.",
+      "required_parameters": [
+        "neural_data",
+        "behavioral_data"
+      ],
+      "optional_parameters": [
+        "n_components",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "\\.pkl\\b"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_crispr_cas9_genome_editing",
+      "module": "biomni.tool.bioengineering",
+      "description": "Simulates CRISPR-Cas9 genome editing process including guide RNA design, delivery, and analysis.",
+      "required_parameters": [
+        "guide_rna_sequences",
+        "target_genomic_loci",
+        "cell_tissue_type"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_whole_cell_ode_model",
+      "module": "biomni.tool.bioengineering",
+      "description": "Simulate a whole-cell model represented as a system of ordinary differential equations (ODEs).",
+      "required_parameters": [
+        "initial_conditions",
+        "parameters"
+      ],
+      "optional_parameters": [
+        "ode_function",
+        "time_span",
+        "time_points",
+        "method"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "batch_register_images",
+      "module": "biomni.tool.bioimaging",
+      "description": "Perform batch registration of multiple images to a single reference image. Automatically processes all medical image files in a directory and registers them to the fixed reference. Supports rigid, affine, or deformable registration for all images.",
+      "required_parameters": [
+        "fixed_image_path",
+        "moving_images_dir",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "transform_type",
+        "metric",
+        "optimizer",
+        "preprocess",
+        "create_visualizations",
+        "learning_rate",
+        "number_of_iterations",
+        "gradient_convergence_tolerance"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "calculate_similarity_metrics",
+      "module": "biomni.tool.bioimaging",
+      "description": "Calculate similarity metrics between two medical images. Supports mutual information, mean squared error, correlation, and normalized cross correlation.",
+      "required_parameters": [
+        "image1_path",
+        "image2_path"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "create_segmentation_visualization",
+      "module": "biomni.tool.bioimaging",
+      "description": "Create and save visualization of segmentation results using nilearn. Generates overlay plots and multiple anatomical views.",
+      "required_parameters": [
+        "original_mri",
+        "segmentation"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "prepare_input_for_nnunet",
+      "module": "biomni.tool.bioimaging",
+      "description": "Prepare input data for nnUNet by handling both 4D and pre-split modality files. Automatically detects file format and prepares data accordingly.",
+      "required_parameters": [
+        "input_path",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "case_name"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quick_affine_registration",
+      "module": "biomni.tool.bioimaging",
+      "description": "Perform affine image registration between two medical images using SimpleITK. Affine registration handles translation, rotation, scaling, and shearing. More flexible than rigid registration but still preserves parallel lines.",
+      "required_parameters": [
+        "fixed_image_path",
+        "moving_image_path",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "metric",
+        "optimizer",
+        "preprocess",
+        "create_visualizations",
+        "learning_rate",
+        "number_of_iterations",
+        "gradient_convergence_tolerance"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quick_deformable_registration",
+      "module": "biomni.tool.bioimaging",
+      "description": "Perform deformable (B-spline) image registration between two medical images using SimpleITK. Deformable registration allows for local non-linear transformations, handling complex deformations. Most flexible but computationally intensive registration method.",
+      "required_parameters": [
+        "fixed_image_path",
+        "moving_image_path",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "metric",
+        "optimizer",
+        "preprocess",
+        "create_visualizations",
+        "learning_rate",
+        "number_of_iterations",
+        "gradient_convergence_tolerance",
+        "number_of_control_points"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quick_rigid_registration",
+      "module": "biomni.tool.bioimaging",
+      "description": "Perform rigid image registration between two medical images using SimpleITK. Rigid registration handles translation and rotation only, preserving shape and size. Includes preprocessing, similarity metrics calculation, and visualization generation.",
+      "required_parameters": [
+        "fixed_image_path",
+        "moving_image_path",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "metric",
+        "optimizer",
+        "preprocess",
+        "create_visualizations",
+        "learning_rate",
+        "number_of_iterations",
+        "gradient_convergence_tolerance"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "segment_with_nn_unet",
+      "module": "biomni.tool.bioimaging",
+      "description": "Segment images using nnUNet with proper environment setup. Supports brain tumor segmentation and other medical image segmentation tasks.",
+      "required_parameters": [
+        "image_path",
+        "output_dir",
+        "task_id"
+      ],
+      "optional_parameters": [
+        "model_type",
+        "folds",
+        "use_tta",
+        "num_threads",
+        "mixed_precision",
+        "verbose",
+        "auto_prepare_input",
+        "results_folder"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "split_modalities",
+      "module": "biomni.tool.bioimaging",
+      "description": "Split a 4D NIfTI file into separate modality files for nnUNet processing. Handles BRATS dataset format with FLAIR, T1w, t1gd, and T2w modalities.",
+      "required_parameters": [
+        "input_file",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "case_name"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_cell_morphology_and_cytoskeleton",
+      "module": "biomni.tool.biophysics",
+      "description": "Quantifies cell morphology and cytoskeletal organization from fluorescence microscopy images.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "threshold_method"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_cell_senescence_and_apoptosis",
+      "module": "biomni.tool.cancer_biology",
+      "description": "Analyze flow cytometry data to quantify senescent and apoptotic cell populations.",
+      "required_parameters": [
+        "fcs_file_path"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_copy_number_purity_ploidy_and_focal_events",
+      "module": "biomni.tool.cancer_biology",
+      "description": "CNVkit-based copy number workflow performing CNV segmentation, purity & ploidy approximation, simplified HRD-style metrics, and focal amplification/deletion detection in selected genes.",
+      "required_parameters": [
+        "tumor_bam",
+        "reference_genome"
+      ],
+      "optional_parameters": [
+        "normal_bam",
+        "output_dir",
+        "targets_bed",
+        "antitargets_bed",
+        "gene_bed",
+        "focal_genes",
+        "log2_amp_threshold",
+        "log2_del_threshold"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_ddr_network_in_cancer",
+      "module": "biomni.tool.cancer_biology",
+      "description": "Analyze DNA Damage Response (DDR) network alterations and dependencies in cancer samples.",
+      "required_parameters": [
+        "expression_data_path",
+        "mutation_data_path"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "detect_and_annotate_somatic_mutations",
+      "module": "biomni.tool.cancer_biology",
+      "description": "Detects and annotates somatic mutations in tumor samples compared to matched normal samples using GATK Mutect2 for variant calling, GATK FilterMutectCalls for filtering, and SnpEff for functional annotation.",
+      "required_parameters": [
+        "tumor_bam",
+        "normal_bam",
+        "reference_genome",
+        "output_prefix"
+      ],
+      "optional_parameters": [
+        "snpeff_database"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "detect_and_characterize_structural_variations",
+      "module": "biomni.tool.cancer_biology",
+      "description": "Detects and characterizes structural variations (SVs) in genomic sequencing data using LUMPY for SV detection followed by annotation with COSMIC and/or ClinVar databases.",
+      "required_parameters": [
+        "bam_file_path",
+        "reference_genome_path",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "cosmic_db_path",
+        "clinvar_db_path"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_gene_expression_nmf_analysis",
+      "module": "biomni.tool.cancer_biology",
+      "description": "Performs Non-negative Matrix Factorization (NMF) on gene expression data to extract metagenes and their associated sample weights for tumor subtype identification.",
+      "required_parameters": [
+        "expression_data_path"
+      ],
+      "optional_parameters": [
+        "n_components",
+        "normalize",
+        "output_dir",
+        "random_state"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_flow_cytometry_immunophenotyping",
+      "module": "biomni.tool.cell_biology",
+      "description": "Analyze flow cytometry data to identify and quantify specific cell populations based on surface markers.",
+      "required_parameters": [
+        "fcs_file_path",
+        "gating_strategy"
+      ],
+      "optional_parameters": [
+        "compensation_matrix",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_mitochondrial_morphology_and_potential",
+      "module": "biomni.tool.cell_biology",
+      "description": "Quantifies metrics of mitochondrial morphology and membrane potential from fluorescence microscopy images.",
+      "required_parameters": [
+        "morphology_image_path",
+        "potential_image_path"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_facs_cell_sorting",
+      "module": "biomni.tool.cell_biology",
+      "description": "Performs Fluorescence-Activated Cell Sorting (FACS) to enrich cell populations based on fluorescence characteristics.",
+      "required_parameters": [
+        "cell_suspension_data",
+        "fluorescence_parameter"
+      ],
+      "optional_parameters": [
+        "threshold_min",
+        "threshold_max",
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quantify_and_cluster_cell_motility",
+      "module": "biomni.tool.cell_biology",
+      "description": "Quantify cell motility features from time-lapse microscopy images and cluster cells based on motility patterns.",
+      "required_parameters": [
+        "image_sequence_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "num_clusters"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quantify_cell_cycle_phases_from_microscopy",
+      "module": "biomni.tool.cell_biology",
+      "description": "Quantify the percentage of cells in each cell cycle phase using Calcofluor white stained microscopy images.",
+      "required_parameters": [
+        "image_paths"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_cas9_mutation_outcomes",
+      "module": "biomni.tool.genetics",
+      "description": "Analyzes and categorizes mutations induced by Cas9 at target sites.",
+      "required_parameters": [
+        "reference_sequences",
+        "edited_sequences"
+      ],
+      "optional_parameters": [
+        "cell_line_info",
+        "output_prefix"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_crispr_genome_editing",
+      "module": "biomni.tool.genetics",
+      "description": "Analyzes CRISPR-Cas9 genome editing results by comparing original and edited sequences.",
+      "required_parameters": [
+        "original_sequence",
+        "edited_sequence",
+        "guide_rna"
+      ],
+      "optional_parameters": [
+        "repair_template"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_protein_phylogeny",
+      "module": "biomni.tool.genetics",
+      "description": "Perform phylogenetic analysis on a set of protein sequences. This function aligns sequences, constructs a phylogenetic tree, and visualizes evolutionary relationships.",
+      "required_parameters": [
+        "fasta_sequences"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "alignment_method",
+        "tree_method"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "bayesian_finemapping_with_deep_vi",
+      "module": "biomni.tool.genetics",
+      "description": "Performs Bayesian fine-mapping from GWAS summary statistics using deep variational inference to compute posterior inclusion probabilities and credible sets for putative causal variants.",
+      "required_parameters": [
+        "gwas_summary_path",
+        "ld_matrix"
+      ],
+      "optional_parameters": [
+        "n_iterations",
+        "learning_rate",
+        "hidden_dim",
+        "credible_threshold"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "fit_genomic_prediction_model",
+      "module": "biomni.tool.genetics",
+      "description": "Fit a linear mixed model for genomic prediction using genotype and phenotype data.",
+      "required_parameters": [
+        "genotypes",
+        "phenotypes"
+      ],
+      "optional_parameters": [
+        "fixed_effects",
+        "model_type",
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "liftover_coordinates",
+      "module": "biomni.tool.genetics",
+      "description": "Perform liftover of genomic coordinates between hg19 and hg38 formats with detailed intermediate steps.",
+      "required_parameters": [
+        "chromosome",
+        "position",
+        "input_format",
+        "output_format",
+        "data_path"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_pcr_and_gel_electrophoresis",
+      "module": "biomni.tool.genetics",
+      "description": "Performs PCR amplification of a target transgene and visualizes results using agarose gel electrophoresis.",
+      "required_parameters": [
+        "genomic_dna"
+      ],
+      "optional_parameters": [
+        "forward_primer",
+        "reverse_primer",
+        "target_region",
+        "annealing_temp",
+        "extension_time",
+        "cycles",
+        "gel_percentage",
+        "output_prefix"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_demographic_history",
+      "module": "biomni.tool.genetics",
+      "description": "Simulate DNA sequences with specified demographic and coalescent histories using msprime.",
+      "required_parameters": [],
+      "optional_parameters": [
+        "num_samples",
+        "sequence_length",
+        "recombination_rate",
+        "mutation_rate",
+        "demographic_model",
+        "demographic_params",
+        "coalescent_model",
+        "beta_coalescent_param",
+        "random_seed",
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_chromatin_interactions",
+      "module": "biomni.tool.genomics",
+      "description": "Analyze chromatin interactions from Hi-C data to identify enhancer-promoter interactions and TADs.",
+      "required_parameters": [
+        "hic_file_path",
+        "regulatory_elements_bed"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_comparative_genomics_and_haplotypes",
+      "module": "biomni.tool.genomics",
+      "description": "Perform comparative genomics and haplotype analysis on multiple genome samples. Aligns genome samples to a reference, identifies variants, analyzes shared and unique genomic regions, and determines haplotype structure.",
+      "required_parameters": [
+        "sample_fasta_files",
+        "reference_genome_path"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_genomic_region_overlap",
+      "module": "biomni.tool.genomics",
+      "description": "Analyze overlaps between two or more sets of genomic regions.",
+      "required_parameters": [
+        "region_sets"
+      ],
+      "optional_parameters": [
+        "output_prefix"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "annotate_celltype_scRNA",
+      "module": "biomni.tool.genomics",
+      "description": "Annotate cell types based on gene markers and transferred labels using LLM. After leiden clustering, annotate clusters using differentially expressed genes and optionally incorporate transferred labels from reference datasets.",
+      "required_parameters": [
+        "adata_filename",
+        "data_dir",
+        "data_info",
+        "data_lake_path"
+      ],
+      "optional_parameters": [
+        "cluster",
+        "llm",
+        "composition"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "data_lake_path",
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "create_scvi_embeddings_scRNA",
+      "module": "biomni.tool.genomics",
+      "description": "Create scVI and scANVI embeddings for single-cell RNA-seq data, saving the results to an AnnData object.",
+      "required_parameters": [
+        "adata_filename",
+        "batch_key",
+        "label_key",
+        "data_dir"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "find_enriched_motifs_with_homer",
+      "module": "biomni.tool.genomics",
+      "description": "Find DNA sequence motifs enriched in genomic regions using the HOMER motif discovery software.",
+      "required_parameters": [
+        "peak_file"
+      ],
+      "optional_parameters": [
+        "genome",
+        "background_file",
+        "motif_length",
+        "output_dir",
+        "num_motifs",
+        "threads"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "gene_set_enrichment_analysis",
+      "module": "biomni.tool.genomics",
+      "description": "Perform enrichment analysis for a list of genes, with optional background gene set and plotting functionality.",
+      "required_parameters": [
+        "genes"
+      ],
+      "optional_parameters": [
+        "top_k",
+        "database",
+        "background_list",
+        "plot"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "generate_gene_embeddings_with_ESM_models",
+      "module": "biomni.tool.genomics",
+      "description": "Generate average protein embeddings for a list of Ensembl gene IDs using ESM (Evolutionary Scale Modeling) protein language models. This function fetches all protein isoform sequences for each gene, computes embeddings for each isoform using the specified ESM model and layer, then averages the embeddings across all isoforms to create a single representative embedding per gene. The embeddings are saved as PyTorch tensors for future use. Memory-friendly implementation with rolling averages, small batch processing, and automatic memory management. Automatically handles GPU/CPU device selection and includes error recovery for out-of-memory situations by falling back to single-sequence processing.",
+      "required_parameters": [
+        "ensembl_gene_ids"
+      ],
+      "optional_parameters": [
+        "model_name",
+        "layer",
+        "save_path",
+        "batch_size",
+        "max_sequence_length"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "generate_transcriptformer_embeddings",
+      "module": "biomni.tool.genomics",
+      "description": "Generate Transcriptformer embeddings for single-cell RNA-seq data. This function downloads model checkpoints, prepares the AnnData object with required fields (ensembl_id, raw counts, assay metadata), and runs inference to generate cell or gene embeddings. Transcriptformer is a transformer-based model that can learn rich representations of single-cell gene expression data. The function automatically handles Ensembl ID pattern detection, model downloading, data preprocessing, and creates missing assay metadata columns with 'unknown' values if needed.",
+      "required_parameters": [
+        "adata_filename",
+        "data_dir"
+      ],
+      "optional_parameters": [
+        "output_filename",
+        "model_type",
+        "checkpoint_path",
+        "batch_size",
+        "precision",
+        "clip_counts",
+        "embedding_layer_index",
+        "num_gpus",
+        "n_data_workers",
+        "gene_col_name",
+        "pretrained_embedding",
+        "filter_to_vocabs",
+        "use_raw",
+        "emb_type",
+        "remove_duplicate_genes",
+        "oom_dataloader"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_gene_set_enrichment_analysis_supported_database_list",
+      "module": "biomni.tool.genomics",
+      "description": "Returns a list of supported databases for gene set enrichment analysis.",
+      "required_parameters": [],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_rna_seq_archs4",
+      "module": "biomni.tool.genomics",
+      "description": "Given a gene name, fetch RNA-seq expression data showing the top K tissues with highest transcripts-per-million (TPM) values.",
+      "required_parameters": [
+        "gene_name"
+      ],
+      "optional_parameters": [
+        "K"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "map_to_ima_interpret_scRNA",
+      "module": "biomni.tool.genomics",
+      "description": "Map cell embeddings from the input dataset to the Integrated Megascale Atlas reference dataset using UCE embeddings.",
+      "required_parameters": [
+        "adata_filename",
+        "data_dir"
+      ],
+      "optional_parameters": [
+        "custom_args"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_chipseq_peak_calling_with_macs2",
+      "module": "biomni.tool.genomics",
+      "description": "Perform ChIP-seq peak calling using MACS2 to identify genomic regions with significant binding.",
+      "required_parameters": [
+        "chip_seq_file",
+        "control_file"
+      ],
+      "optional_parameters": [
+        "output_name",
+        "genome_size",
+        "q_value"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "unsupervised_celltype_transfer_between_scRNA_datasets",
+      "module": "biomni.tool.genomics",
+      "description": "Transfer cell type labels from an annotated reference scRNA-seq dataset to an unannotated query dataset using popV. Loads both AnnData .h5ad files, prepares count layers for scVI, processes the query against the reference, and runs selected annotation methods (default: SCANVI_POPV). Saves predictions to 'output_folder/popv_output/predictions.csv'. This function allows you to use different annotaiton methods i.e. CELLTYPIST, KNN_BBKNN, KNN_HARMONY, KNN_SCANORAMA, KNN_SCVI, ONCLASS, Random_Forest, SCANVI_POPV, Support_Vector, XGboost. Based on you transfer task you can select the multiple best annotation methods. Beware each annotation method adds computational requirements for running the tool. By default it uses SCANVI_POPV method.",
+      "required_parameters": [
+        "path_to_annotated_h5ad",
+        "path_to_not_annotated_h5ad",
+        "ref_labels_key"
+      ],
+      "optional_parameters": [
+        "query_batch_key",
+        "ref_batch_key",
+        "CELLTYPIST",
+        "KNN_BBKNN",
+        "KNN_HARMONY",
+        "KNN_SCANORAMA",
+        "KNN_SCVI",
+        "ONCLASS",
+        "Random_Forest",
+        "SCANVI_POPV",
+        "Support_Vector",
+        "XGboost",
+        "n_jobs",
+        "output_folder",
+        "n_samples_per_label"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "find_n_glycosylation_motifs",
+      "module": "biomni.tool.glycoengineering",
+      "description": "Scan a protein sequence for canonical N-glycosylation sequons (N-X-[S/T], X≠P). Returns positions and motifs.",
+      "required_parameters": [
+        "sequence"
+      ],
+      "optional_parameters": [
+        "allow_overlap"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "predict_o_glycosylation_hotspots",
+      "module": "biomni.tool.glycoengineering",
+      "description": "Heuristic O-glycosite hotspot prediction using local S/T density (lightweight baseline; see NetOGlyc 4.0 for SOTA).",
+      "required_parameters": [
+        "sequence"
+      ],
+      "optional_parameters": [
+        "window",
+        "min_st_fraction",
+        "disallow_proline_next"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_atac_seq_differential_accessibility",
+      "module": "biomni.tool.immunology",
+      "description": "Perform ATAC-seq peak calling and differential accessibility analysis using MACS2.",
+      "required_parameters": [
+        "treatment_bam",
+        "control_bam"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "genome_size",
+        "q_value",
+        "name_prefix"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_bacterial_growth_curve",
+      "module": "biomni.tool.immunology",
+      "description": "Analyzes bacterial growth curve data to determine growth parameters such as doubling time, growth rate, and lag phase.",
+      "required_parameters": [
+        "time_points",
+        "od_values",
+        "strain_name"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_cfse_cell_proliferation",
+      "module": "biomni.tool.immunology",
+      "description": "Analyze CFSE-labeled cell samples to quantify cell division and proliferation.",
+      "required_parameters": [
+        "fcs_file_path"
+      ],
+      "optional_parameters": [
+        "cfse_channel",
+        "lymphocyte_gate"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_cns_lesion_histology",
+      "module": "biomni.tool.immunology",
+      "description": "Analyzes histological images of CNS lesions to quantify immune cell infiltration, demyelination, and tissue damage.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "stain_type"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_cytokine_production_in_cd4_tcells",
+      "module": "biomni.tool.immunology",
+      "description": "Analyze cytokine production (IFN-γ, IL-17) in CD4+ T cells after antigen stimulation.",
+      "required_parameters": [
+        "fcs_files_dict"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_ebv_antibody_titers",
+      "module": "biomni.tool.immunology",
+      "description": "Analyze ELISA data to quantify EBV antibody titers in plasma/serum samples.",
+      "required_parameters": [
+        "raw_od_data",
+        "standard_curve_data",
+        "sample_metadata"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_immunohistochemistry_image",
+      "module": "biomni.tool.immunology",
+      "description": "Analyzes immunohistochemistry images to quantify protein expression and spatial distribution.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "protein_name",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "estimate_cell_cycle_phase_durations",
+      "module": "biomni.tool.immunology",
+      "description": "Estimate cell cycle phase durations using dual-nucleoside pulse labeling data and mathematical modeling.",
+      "required_parameters": [
+        "flow_cytometry_data",
+        "initial_estimates"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "isolate_purify_immune_cells",
+      "module": "biomni.tool.immunology",
+      "description": "Simulates the isolation and purification of immune cells from tissue samples.",
+      "required_parameters": [
+        "tissue_type",
+        "target_cell_type"
+      ],
+      "optional_parameters": [
+        "enzyme_type",
+        "macs_antibody",
+        "digestion_time_min"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "track_immune_cells_under_flow",
+      "module": "biomni.tool.immunology",
+      "description": "Track immune cells under flow conditions and classify their behaviors.",
+      "required_parameters": [
+        "image_sequence_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "pixel_size_um",
+        "time_interval_sec",
+        "flow_direction"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_pylabrobot_documentation_liquid",
+      "module": "biomni.tool.lab_automation",
+      "description": "Get the documentation for the liquid handling section of the PyLabRobot tutorial.",
+      "required_parameters": [],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_pylabrobot_documentation_material",
+      "module": "biomni.tool.lab_automation",
+      "description": "Get the documentation for the material handling section of the PyLabRobot tutorial.",
+      "required_parameters": [],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "test_pylabrobot_script",
+      "module": "biomni.tool.lab_automation",
+      "description": "Test a PyLabRobot script based on the script content.",
+      "required_parameters": [
+        "script_input"
+      ],
+      "optional_parameters": [
+        "enable_tracking",
+        "timeout_seconds",
+        "save_test_report",
+        "test_report_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_arsenic_speciation_hplc_icpms",
+      "module": "biomni.tool.microbiology",
+      "description": "Analyzes arsenic speciation in liquid samples using HPLC-ICP-MS technique. Returns a research log summarizing analysis steps and results.",
+      "required_parameters": [
+        "sample_data"
+      ],
+      "optional_parameters": [
+        "sample_name",
+        "calibration_data"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "annotate_bacterial_genome",
+      "module": "biomni.tool.microbiology",
+      "description": "Annotate a bacterial genome using Prokka to identify genes, proteins, and functional features.",
+      "required_parameters": [
+        "genome_file_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "genus",
+        "species",
+        "strain",
+        "prefix"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "count_bacterial_colonies",
+      "module": "biomni.tool.microbiology",
+      "description": "Count bacterial colonies from an image of agar plate using computer vision techniques.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "dilution_factor",
+        "plate_area_cm2",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "enumerate_bacterial_cfu_by_serial_dilution",
+      "module": "biomni.tool.microbiology",
+      "description": "Quantify bacterial concentration (CFU/mL) using serial dilutions and spot plating.",
+      "required_parameters": [],
+      "optional_parameters": [
+        "initial_sample_volume_ml",
+        "estimated_concentration",
+        "dilution_factor",
+        "num_dilutions",
+        "spots_per_dilution",
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "model_bacterial_growth_dynamics",
+      "module": "biomni.tool.microbiology",
+      "description": "Model bacterial population dynamics over time using ordinary differential equations.",
+      "required_parameters": [
+        "initial_population",
+        "growth_rate",
+        "clearance_rate",
+        "niche_size"
+      ],
+      "optional_parameters": [
+        "simulation_time",
+        "time_step"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "optimize_anaerobic_digestion_process",
+      "module": "biomni.tool.microbiology",
+      "description": "Optimize anaerobic digestion process conditions to maximize VFA production or methane yield.",
+      "required_parameters": [
+        "waste_characteristics",
+        "operational_parameters"
+      ],
+      "optional_parameters": [
+        "target_output",
+        "optimization_method"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "predict_rna_secondary_structure",
+      "module": "biomni.tool.microbiology",
+      "description": "Predict the secondary structure of an RNA molecule using ViennaRNA.",
+      "required_parameters": [
+        "rna_sequence"
+      ],
+      "optional_parameters": [
+        "output_prefix"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quantify_biofilm_biomass_crystal_violet",
+      "module": "biomni.tool.microbiology",
+      "description": "Quantifies biofilm biomass using crystal violet staining assay data and returns a detailed research log.",
+      "required_parameters": [
+        "od_values"
+      ],
+      "optional_parameters": [
+        "sample_names",
+        "control_index",
+        "save_path"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "segment_and_analyze_microbial_cells",
+      "module": "biomni.tool.microbiology",
+      "description": "Perform automated cell segmentation and quantify morphological metrics from fluorescence microscopy images.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "min_cell_size"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "segment_cells_with_deep_learning",
+      "module": "biomni.tool.microbiology",
+      "description": "Perform cell segmentation on fluorescence microscopy images using deep learning with pre-trained models from the Cellpose/Omnipose library.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "model_type",
+        "diameter",
+        "save_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_generalized_lotka_volterra_dynamics",
+      "module": "biomni.tool.microbiology",
+      "description": "Simulate microbial community dynamics using the Generalized Lotka-Volterra (gLV) model.",
+      "required_parameters": [
+        "initial_abundances",
+        "growth_rates",
+        "interaction_matrix",
+        "time_points"
+      ],
+      "optional_parameters": [
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_microbial_population_dynamics",
+      "module": "biomni.tool.microbiology",
+      "description": "Performs stochastic simulation of microbial population dynamics using the Gillespie algorithm.",
+      "required_parameters": [
+        "initial_populations",
+        "growth_rates",
+        "clearance_rates",
+        "carrying_capacities"
+      ],
+      "optional_parameters": [
+        "max_time",
+        "num_simulations",
+        "time_points"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "align_sequences",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Align short sequences (primers) to a longer sequence, allowing for one mismatch. Checks both forward and reverse complement strands.",
+      "required_parameters": [
+        "long_seq",
+        "short_seqs"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "annotate_open_reading_frames",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Find all Open Reading Frames (ORFs) in a DNA sequence using Biopython, searching both forward and reverse complement strands.",
+      "required_parameters": [
+        "sequence",
+        "min_length"
+      ],
+      "optional_parameters": [
+        "search_reverse",
+        "filter_subsets"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "annotate_plasmid",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Annotate a DNA sequence using pLannotate's command-line interface.",
+      "required_parameters": [
+        "sequence"
+      ],
+      "optional_parameters": [
+        "is_circular"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "design_golden_gate_oligos",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Design complementary oligonucleotides with Type IIS restriction enzyme overhangs for Golden Gate assembly based on restriction site analysis of the backbone.",
+      "required_parameters": [
+        "backbone_sequence",
+        "insert_sequence",
+        "enzyme_name"
+      ],
+      "optional_parameters": [
+        "is_circular"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "design_knockout_sgrna",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Design sgRNAs for CRISPR knockout by searching pre-computed sgRNA libraries. Returns optimized guide RNAs for targeting a specific gene.",
+      "required_parameters": [
+        "gene_name",
+        "data_lake_path"
+      ],
+      "optional_parameters": [
+        "species",
+        "num_guides"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "data_lake_path",
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "design_primer",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Design a single primer within the given sequence window.",
+      "required_parameters": [
+        "sequence",
+        "start_pos"
+      ],
+      "optional_parameters": [
+        "primer_length",
+        "min_gc",
+        "max_gc",
+        "min_tm",
+        "max_tm",
+        "search_window"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "design_verification_primers",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Design Sanger sequencing primers to verify a specific region in a plasmid. First tries to use primers from an existing primer pool. If they cannot fully cover the region, designs additional primers as needed.",
+      "required_parameters": [
+        "plasmid_sequence",
+        "target_region"
+      ],
+      "optional_parameters": [
+        "existing_primers",
+        "is_circular",
+        "coverage_length",
+        "primer_length",
+        "min_gc",
+        "max_gc",
+        "min_tm",
+        "max_tm"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "digest_sequence",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Simulates restriction enzyme digestion of a DNA sequence and returns the resulting fragments with their properties.",
+      "required_parameters": [
+        "dna_sequence",
+        "enzyme_names"
+      ],
+      "optional_parameters": [
+        "is_circular"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "find_restriction_enzymes",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Finds common restriction enzyme sites in a DNA sequence and returns their cut positions.",
+      "required_parameters": [
+        "sequence"
+      ],
+      "optional_parameters": [
+        "is_circular"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "find_restriction_sites",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Identifies restriction enzyme sites in a given DNA sequence for specified enzymes.",
+      "required_parameters": [
+        "dna_sequence",
+        "enzymes"
+      ],
+      "optional_parameters": [
+        "is_circular"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "find_sequence_mutations",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Compare query sequence against reference sequence to identify mutations.",
+      "required_parameters": [
+        "query_sequence",
+        "reference_sequence"
+      ],
+      "optional_parameters": [
+        "query_start"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_bacterial_transformation_protocol",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Return a standard protocol for bacterial transformation.",
+      "required_parameters": [],
+      "optional_parameters": [
+        "antibiotic",
+        "is_repetitive"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_golden_gate_assembly_protocol",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Return a customized protocol for Golden Gate assembly based on the number of inserts and specific DNA sequences.",
+      "required_parameters": [
+        "enzyme_name",
+        "vector_length"
+      ],
+      "optional_parameters": [
+        "num_inserts",
+        "vector_amount_ng",
+        "insert_lengths",
+        "is_library_prep"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_oligo_annealing_protocol",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Return a standard protocol for annealing oligonucleotides without phosphorylation.",
+      "required_parameters": [],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "golden_gate_assembly",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Simulate Golden Gate assembly to predict final construct sequences from backbone and fragment sequences.",
+      "required_parameters": [
+        "backbone_sequence",
+        "enzyme_name",
+        "fragments"
+      ],
+      "optional_parameters": [
+        "is_circular"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "pcr_simple",
+      "module": "biomni.tool.molecular_biology",
+      "description": "Simulate PCR amplification with given primers and sequence.",
+      "required_parameters": [
+        "sequence",
+        "forward_primer",
+        "reverse_primer"
+      ],
+      "optional_parameters": [
+        "circular"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_aortic_diameter_and_geometry",
+      "module": "biomni.tool.pathology",
+      "description": "Analyze aortic diameter and geometry from cardiovascular imaging data to measure aortic root diameter, ascending aorta diameter, and calculate geometric parameters such as tortuosity and dilation indices.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_atp_luminescence_assay",
+      "module": "biomni.tool.pathology",
+      "description": "Analyze luminescence-based ATP assay data to determine intracellular ATP concentration.",
+      "required_parameters": [
+        "data_file",
+        "standard_curve_file"
+      ],
+      "optional_parameters": [
+        "normalization_method",
+        "normalization_data"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_bone_microct_morphometry",
+      "module": "biomni.tool.pathology",
+      "description": "Analyze bone microarchitecture parameters from 3D micro-CT images to calculate bone mineral density, bone volume, trabecular number, thickness, and separation.",
+      "required_parameters": [
+        "input_file_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "threshold_value"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_intracellular_calcium_with_rhod2",
+      "module": "biomni.tool.pathology",
+      "description": "Analyzes intracellular calcium concentration using Rhod-2 fluorescent indicator from microscopy images.",
+      "required_parameters": [
+        "background_image_path",
+        "control_image_path",
+        "sample_image_path"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_thrombus_histology",
+      "module": "biomni.tool.pathology",
+      "description": "Analyze histological images of thrombus samples stained with H&E to identify and quantify different thrombus components (fresh, cellular lysis, endothelialization, fibroblastic reaction).",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quantify_corneal_nerve_fibers",
+      "module": "biomni.tool.pathology",
+      "description": "Quantify the volume/density of immunofluorescence-labeled corneal nerve fibers.",
+      "required_parameters": [
+        "image_path",
+        "marker_type"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "threshold_method"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "segment_and_quantify_cells_in_multiplexed_images",
+      "module": "biomni.tool.pathology",
+      "description": "Segment cells and quantify protein expression levels from multichannel tissue images.",
+      "required_parameters": [
+        "image_path",
+        "markers_list"
+      ],
+      "optional_parameters": [
+        "nuclear_channel_index",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_accelerated_stability_of_pharmaceutical_formulations",
+      "module": "biomni.tool.pharmacology",
+      "description": "Analyzes the stability of pharmaceutical formulations under accelerated storage conditions.",
+      "required_parameters": [
+        "formulations",
+        "storage_conditions",
+        "time_points"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_fda_safety_signals",
+      "module": "biomni.tool.pharmacology",
+      "description": "Analyze safety signals across multiple drugs using OpenFDA adverse event data to identify patterns and comparative risk profiles.",
+      "required_parameters": [
+        "drug_list"
+      ],
+      "optional_parameters": [
+        "comparison_period",
+        "signal_threshold"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_interaction_mechanisms",
+      "module": "biomni.tool.pharmacology",
+      "description": "Analyze interaction mechanisms between two specific drugs providing detailed mechanistic insights and clinical significance assessment.",
+      "required_parameters": [
+        "drug_pair"
+      ],
+      "optional_parameters": [
+        "detailed_analysis",
+        "data_lake_path"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "data_lake_path"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_pixel_distribution",
+      "module": "biomni.tool.pharmacology",
+      "description": "Analyze western blot or DNA electrophoresis images and return pixel distribution statistics including intensity statistics, percentiles, and brightness distribution. Use this to determine appropriate threshold values for find_roi_from_image.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_radiolabeled_antibody_biodistribution",
+      "module": "biomni.tool.pharmacology",
+      "description": "Analyze biodistribution and pharmacokinetic profile of radiolabeled antibodies.",
+      "required_parameters": [
+        "time_points",
+        "tissue_data"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_western_blot",
+      "module": "biomni.tool.pharmacology",
+      "description": "Performs densitometric analysis of Western blot images to quantify relative protein expression.",
+      "required_parameters": [
+        "blot_image_path",
+        "target_bands",
+        "loading_control_band",
+        "antibody_info"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_xenograft_tumor_growth_inhibition",
+      "module": "biomni.tool.pharmacology",
+      "description": "Analyze tumor growth inhibition in xenograft models across different treatment groups.",
+      "required_parameters": [
+        "data_path",
+        "time_column",
+        "volume_column",
+        "group_column",
+        "subject_column"
+      ],
+      "optional_parameters": [
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "calculate_physicochemical_properties",
+      "module": "biomni.tool.pharmacology",
+      "description": "Calculate key physicochemical properties of a drug candidate molecule.",
+      "required_parameters": [
+        "smiles_string"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "check_drug_combination_safety",
+      "module": "biomni.tool.pharmacology",
+      "description": "Analyze safety of a drug combination for potential interactions using DDInter database with comprehensive risk assessment and clinical recommendations.",
+      "required_parameters": [
+        "drug_list"
+      ],
+      "optional_parameters": [
+        "include_mechanisms",
+        "include_management",
+        "data_lake_path"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "data_lake_path"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "check_fda_drug_recalls",
+      "module": "biomni.tool.pharmacology",
+      "description": "Check for FDA drug recalls and enforcement actions from the OpenFDA database to identify safety concerns and regulatory actions.",
+      "required_parameters": [
+        "drug_name"
+      ],
+      "optional_parameters": [
+        "classification",
+        "date_range"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "docking_autodock_vina",
+      "module": "biomni.tool.pharmacology",
+      "description": "Performs molecular docking using AutoDock Vina to predict binding affinities between small molecules and a receptor protein.",
+      "required_parameters": [
+        "smiles_list",
+        "receptor_pdb_file",
+        "box_center",
+        "box_size"
+      ],
+      "optional_parameters": [
+        "ncpu"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "estimate_alpha_particle_radiotherapy_dosimetry",
+      "module": "biomni.tool.pharmacology",
+      "description": "Estimate radiation absorbed doses to tumor and normal organs for alpha-particle radiotherapeutics using the Medical Internal Radiation Dose (MIRD) schema.",
+      "required_parameters": [
+        "biodistribution_data",
+        "radiation_parameters"
+      ],
+      "optional_parameters": [
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "find_alternative_drugs_ddinter",
+      "module": "biomni.tool.pharmacology",
+      "description": "Find alternative drugs that don't interact with contraindicated drugs using DDInter database for safer therapeutic substitutions.",
+      "required_parameters": [
+        "target_drug",
+        "contraindicated_drugs"
+      ],
+      "optional_parameters": [
+        "therapeutic_class",
+        "data_lake_path"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "data_lake_path"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "find_roi_from_image",
+      "module": "biomni.tool.pharmacology",
+      "description": "Find the ROIs (regions of interest) of protein bands from a Western blot or DNA electrophoresis image using threshold-based blob detection. Returns annotated image path and list of ROI coordinates. Use analyze_pixel_distribution first to determine appropriate threshold values. The returned ROI list can be converted to target_bands format for analyze_western_blot.",
+      "required_parameters": [
+        "image_path",
+        "lower_threshold",
+        "upper_threshold",
+        "number_of_bands"
+      ],
+      "optional_parameters": [
+        "debug"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "get_fda_drug_label_info",
+      "module": "biomni.tool.pharmacology",
+      "description": "Retrieve FDA drug label information including indications, contraindications, warnings, and dosage information from the OpenFDA database.",
+      "required_parameters": [
+        "drug_name"
+      ],
+      "optional_parameters": [
+        "sections"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "grade_adverse_events_using_vcog_ctcae",
+      "module": "biomni.tool.pharmacology",
+      "description": "Grade and monitor adverse events in animal studies using the VCOG-CTCAE standard.",
+      "required_parameters": [
+        "clinical_data_file"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_mwas_cyp2c19_metabolizer_status",
+      "module": "biomni.tool.pharmacology",
+      "description": "Perform a Methylome-wide Association Study (MWAS) to identify CpG sites significantly associated with CYP2C19 metabolizer status.",
+      "required_parameters": [
+        "methylation_data_path",
+        "metabolizer_status_path"
+      ],
+      "optional_parameters": [
+        "covariates_path",
+        "pvalue_threshold",
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "predict_admet_properties",
+      "module": "biomni.tool.pharmacology",
+      "description": "Predicts ADMET (Absorption, Distribution, Metabolism, Excretion, Toxicity) properties for a list of compounds using pretrained models.",
+      "required_parameters": [
+        "smiles_list"
+      ],
+      "optional_parameters": [
+        "ADMET_model_type"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "predict_binding_affinity_protein_1d_sequence",
+      "module": "biomni.tool.pharmacology",
+      "description": "Predicts binding affinity between small molecules and a protein sequence using pre-trained deep learning models.",
+      "required_parameters": [
+        "smiles_list",
+        "amino_acid_sequence"
+      ],
+      "optional_parameters": [
+        "affinity_model_type"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "query_drug_interactions",
+      "module": "biomni.tool.pharmacology",
+      "description": "Query drug-drug interactions from DDInter database to identify potential interactions, mechanisms, and severity levels between specified drugs.",
+      "required_parameters": [
+        "drug_names"
+      ],
+      "optional_parameters": [
+        "interaction_types",
+        "severity_levels",
+        "data_lake_path"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "data_lake_path"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "query_fda_adverse_events",
+      "module": "biomni.tool.pharmacology",
+      "description": "Query FDA adverse event reports for specific drugs from the OpenFDA database to identify potential safety signals, reaction patterns, and regulatory intelligence.",
+      "required_parameters": [
+        "drug_name"
+      ],
+      "optional_parameters": [
+        "date_range",
+        "severity_filter",
+        "outcome_filter",
+        "limit"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "retrieve_topk_repurposing_drugs_from_disease_txgnn",
+      "module": "biomni.tool.pharmacology",
+      "description": "Computes TxGNN model predictions for drug repurposing and returns the top predicted drugs with their scores for a given disease.",
+      "required_parameters": [
+        "disease_name",
+        "data_lake_path"
+      ],
+      "optional_parameters": [
+        "k"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "data_lake_path",
+          "\\.pkl\\b"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "run_3d_chondrogenic_aggregate_assay",
+      "module": "biomni.tool.pharmacology",
+      "description": "Generates a detailed protocol for performing a 3D chondrogenic aggregate culture assay to evaluate compounds' effects on chondrogenesis.",
+      "required_parameters": [
+        "chondrocyte_cells",
+        "test_compounds"
+      ],
+      "optional_parameters": [
+        "culture_duration_days",
+        "measurement_intervals"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "run_autosite",
+      "module": "biomni.tool.pharmacology",
+      "description": "linux-aarch64: finds ligand pockets with fpocket because ADFRsuite AutoSite and prepare_receptor are x86-only and cannot be built here. Optionally writes a receptor PDBQT with Meeko (mk_prepare_receptor). Returns a research log with estimated pocket center and size, not an AutoSite log. The spacing argument is ignored.",
+      "required_parameters": [
+        "pdb_file",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "spacing"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "run_diffdock_with_smiles",
+      "module": "biomni.tool.pharmacology",
+      "description": "Run DiffDock molecular docking using a protein PDB file and a SMILES string for the ligand, executing the process in a Docker container.",
+      "required_parameters": [
+        "pdb_path",
+        "smiles_string",
+        "local_output_dir"
+      ],
+      "optional_parameters": [
+        "gpu_device",
+        "use_gpu"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_abr_waveform_p1_metrics",
+      "module": "biomni.tool.physiology",
+      "description": "Extracts P1 amplitude and latency from Auditory Brainstem Response (ABR) waveform data.",
+      "required_parameters": [
+        "time_ms",
+        "amplitude_uv"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_ciliary_beat_frequency",
+      "module": "biomni.tool.physiology",
+      "description": "Analyze ciliary beat frequency from high-speed video microscopy data using FFT analysis.",
+      "required_parameters": [
+        "video_path"
+      ],
+      "optional_parameters": [
+        "roi_count",
+        "min_freq",
+        "max_freq",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_endolysosomal_calcium_dynamics",
+      "module": "biomni.tool.physiology",
+      "description": "Analyze calcium dynamics in endo-lysosomal compartments using ELGA/ELGA1 probe data.",
+      "required_parameters": [
+        "time_points",
+        "luminescence_values"
+      ],
+      "optional_parameters": [
+        "treatment_time",
+        "cell_type",
+        "treatment_name",
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_fatty_acid_composition_by_gc",
+      "module": "biomni.tool.physiology",
+      "description": "Analyzes fatty acid composition in tissue samples using gas chromatography data.",
+      "required_parameters": [
+        "gc_data_file",
+        "tissue_type",
+        "sample_id"
+      ],
+      "optional_parameters": [
+        "output_directory"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": [
+          "pd\\.read_"
+        ]
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_hemodynamic_data",
+      "module": "biomni.tool.physiology",
+      "description": "Analyzes raw blood pressure data to calculate key hemodynamic parameters.",
+      "required_parameters": [
+        "pressure_data",
+        "sampling_rate"
+      ],
+      "optional_parameters": [
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_protein_colocalization",
+      "module": "biomni.tool.physiology",
+      "description": "Analyze colocalization between two fluorescently labeled proteins in microscopy images.",
+      "required_parameters": [
+        "channel1_path",
+        "channel2_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "threshold_method"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "calculate_brain_adc_map",
+      "module": "biomni.tool.physiology",
+      "description": "Calculate Apparent Diffusion Coefficient (ADC) map from diffusion-weighted MRI data using monoexponential diffusion model.",
+      "required_parameters": [
+        "dwi_file_path",
+        "b_values"
+      ],
+      "optional_parameters": [
+        "output_path",
+        "mask_file_path"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_cosinor_analysis",
+      "module": "biomni.tool.physiology",
+      "description": "Performs cosinor analysis on physiological time series data to characterize circadian rhythms.",
+      "required_parameters": [
+        "time_data",
+        "physiological_data"
+      ],
+      "optional_parameters": [
+        "period"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "quantify_amyloid_beta_plaques",
+      "module": "biomni.tool.physiology",
+      "description": "Analyzes an image to detect and quantify amyloid-beta plaques, returning a detailed analysis log.",
+      "required_parameters": [
+        "image_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "threshold_method",
+        "min_plaque_size",
+        "manual_threshold"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "reconstruct_3d_face_from_mri",
+      "module": "biomni.tool.physiology",
+      "description": "Generate a 3D model of facial anatomy from MRI scans of the head and neck.",
+      "required_parameters": [
+        "mri_file_path"
+      ],
+      "optional_parameters": [
+        "output_dir",
+        "subject_id",
+        "threshold_value"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_thyroid_hormone_pharmacokinetics",
+      "module": "biomni.tool.physiology",
+      "description": "Simulates the transport and binding of thyroid hormones across different tissue compartments using an ODE-based pharmacokinetic model.",
+      "required_parameters": [
+        "parameters",
+        "initial_conditions"
+      ],
+      "optional_parameters": [
+        "time_span",
+        "time_points"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "list_local_protocols",
+      "module": "biomni.tool.protocols",
+      "description": "List available protocol files in the local biomni/tool/protocols/ directory. Includes protocols from Addgene and Thermo Fisher Scientific.",
+      "required_parameters": [],
+      "optional_parameters": [
+        "source"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "read_local_protocol",
+      "module": "biomni.tool.protocols",
+      "description": "Read the contents of a local protocol file from biomni/tool/protocols/. Use list_local_protocols() first to find available protocol filenames.",
+      "required_parameters": [
+        "filename"
+      ],
+      "optional_parameters": [
+        "source"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "download_synapse_data",
+      "module": "biomni.tool.support_tools",
+      "description": "Download data from Synapse using entity IDs. Requires SYNAPSE_AUTH_TOKEN environment variable for authentication. CRITICAL: Always specify entity_type parameter based on what you're downloading (file, dataset, folder, project). Check user hints like 'files' or search results to determine correct type. Multiple IDs only work with entity_type='file'. Recursive only works with entity_type='folder'.",
+      "required_parameters": [
+        "entity_ids"
+      ],
+      "optional_parameters": [
+        "download_location",
+        "follow_link",
+        "recursive",
+        "timeout",
+        "entity_type"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "read_function_source_code",
+      "module": "biomni.tool.support_tools",
+      "description": "Read the source code of a function from any module path.",
+      "required_parameters": [
+        "function_name"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "run_python_repl",
+      "module": "biomni.tool.support_tools",
+      "description": "Executes the provided Python command in the notebook environment and returns the output.",
+      "required_parameters": [
+        "command"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_bacterial_growth_rate",
+      "module": "biomni.tool.synthetic_biology",
+      "description": "Analyze bacterial growth data and extract growth parameters from OD600 measurements.",
+      "required_parameters": [
+        "time_points",
+        "od_measurements"
+      ],
+      "optional_parameters": [
+        "strain_name",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_barcode_sequencing_data",
+      "module": "biomni.tool.synthetic_biology",
+      "description": "Analyze sequencing data to extract, quantify and determine lineage relationships of barcodes.",
+      "required_parameters": [
+        "input_file"
+      ],
+      "optional_parameters": [
+        "barcode_pattern",
+        "flanking_seq_5prime",
+        "flanking_seq_3prime",
+        "min_count",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "analyze_bifurcation_diagram",
+      "module": "biomni.tool.synthetic_biology",
+      "description": "Performs bifurcation analysis on a dynamical system and generates a bifurcation diagram.",
+      "required_parameters": [
+        "time_series_data",
+        "parameter_values"
+      ],
+      "optional_parameters": [
+        "system_name",
+        "output_dir"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "create_biochemical_network_sbml_model",
+      "module": "biomni.tool.synthetic_biology",
+      "description": "Generate a mathematical model of a biochemical network in SBML format.",
+      "required_parameters": [
+        "reaction_network",
+        "kinetic_parameters"
+      ],
+      "optional_parameters": [
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "engineer_bacterial_genome_for_therapeutic_delivery",
+      "module": "biomni.tool.synthetic_biology",
+      "description": "Engineer a bacterial genome by integrating therapeutic genetic parts for therapeutic delivery.",
+      "required_parameters": [
+        "bacterial_genome_file",
+        "genetic_parts"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "optimize_codons_for_heterologous_expression",
+      "module": "biomni.tool.synthetic_biology",
+      "description": "Analyzes and optimizes a DNA/RNA sequence for improved expression in a heterologous host organism.",
+      "required_parameters": [
+        "target_sequence",
+        "host_codon_usage"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_gene_circuit_with_growth_feedback",
+      "module": "biomni.tool.synthetic_biology",
+      "description": "Simulate gene regulatory circuit dynamics with growth feedback.",
+      "required_parameters": [
+        "circuit_topology",
+        "kinetic_params",
+        "growth_params"
+      ],
+      "optional_parameters": [
+        "simulation_time",
+        "time_points"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "compare_protein_structures",
+      "module": "biomni.tool.systems_biology",
+      "description": "Compares two protein structures to identify structural differences and conformational changes.",
+      "required_parameters": [
+        "pdb_file1",
+        "pdb_file2"
+      ],
+      "optional_parameters": [
+        "chain_id1",
+        "chain_id2",
+        "output_prefix"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "model_protein_dimerization_network",
+      "module": "biomni.tool.systems_biology",
+      "description": "Model protein dimerization networks to find equilibrium concentrations of dimers.",
+      "required_parameters": [
+        "monomer_concentrations",
+        "dimerization_affinities",
+        "network_topology"
+      ],
+      "optional_parameters": [],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "perform_flux_balance_analysis",
+      "module": "biomni.tool.systems_biology",
+      "description": "Perform Flux Balance Analysis (FBA) on a genome-scale metabolic network model and return a research log of the process and results.",
+      "required_parameters": [
+        "model_file"
+      ],
+      "optional_parameters": [
+        "constraints",
+        "objective_reaction",
+        "output_file"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "query_chatnt",
+      "module": "biomni.tool.systems_biology",
+      "description": "Answer functions and properties questions for DNA sequences",
+      "required_parameters": [
+        "question",
+        "sequence"
+      ],
+      "optional_parameters": [
+        "device"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_metabolic_network_perturbation",
+      "module": "biomni.tool.systems_biology",
+      "description": "Construct and simulate kinetic models of metabolic networks and analyze their responses to perturbations.",
+      "required_parameters": [
+        "model_file",
+        "initial_concentrations",
+        "perturbation_params"
+      ],
+      "optional_parameters": [
+        "simulation_time",
+        "time_points"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_protein_signaling_network",
+      "module": "biomni.tool.systems_biology",
+      "description": "Simulate protein signaling network dynamics using ODE-based logic modeling with normalized Hill functions.",
+      "required_parameters": [
+        "network_structure",
+        "reaction_params",
+        "species_params"
+      ],
+      "optional_parameters": [
+        "simulation_time",
+        "time_points"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    },
+    {
+      "name": "simulate_renin_angiotensin_system_dynamics",
+      "module": "biomni.tool.systems_biology",
+      "description": "Simulate the time-dependent concentrations of renin-angiotensin system (RAS) components.",
+      "required_parameters": [
+        "initial_concentrations",
+        "rate_constants",
+        "feedback_params"
+      ],
+      "optional_parameters": [
+        "simulation_time",
+        "time_points"
+      ],
+      "evidence": {
+        "remote_patterns": [],
+        "local_patterns": []
+      },
+      "access": "local",
+      "reason": "implementation uses local compute and/or local files/data_lake; no required remote API in source"
+    }
+  ],
+  "unresolved_tools": [
+    {
+      "name": "create_registration_visualization",
+      "module": "biomni.tool.bioimaging",
+      "description": "Create visualization plots for registration results. Generates comparison plots, difference images, overlays, and metric charts.",
+      "required_parameters": [
+        "fixed_image_path",
+        "moving_image_path",
+        "registered_image_path",
+        "output_dir"
+      ],
+      "optional_parameters": [
+        "prefix"
+      ],
+      "note": "missing_function",
+      "access": "unresolved"
+    }
+  ],
+  "classification_notes": [
+    "Remote vs local is based on static inspection of each tool function source (module2api / MCP surface).",
+    "Tools that only optionally download (e.g. model weights) may still be marked remote if source contains download/HTTP.",
+    "create_registration_visualization is listed in schemas but missing from biomni.tool.bioimaging (same gap as MCP register warning)."
+  ]
+}

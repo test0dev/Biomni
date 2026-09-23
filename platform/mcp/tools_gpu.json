@@ -1,0 +1,222 @@
+{
+  "generated_at": "2026-09-23T08:30:00Z",
+  "method": "Read each candidate tool implementation (not keyword-only). Candidates were first widened by ML/GPU-related symbols, then each function body and callees were inspected for device selection, training/inference path, and whether CPU is viable.",
+  "tiers": {
+    "requires_gpu": "Designed for GPU; docs/defaults assume CUDA, or workload is impractical on CPU for normal use.",
+    "prefers_gpu": "Uses PyTorch/HF/DeepPurpose and will take CUDA when available, but the coded path can run on CPU (often slowly).",
+    "cpu_forced_or_default": "Touches a DL library but this wrapper hardcodes or defaults to CPU.",
+    "not_gpu": "Matched the candidate net by coincidence (docs/URLs/names); implementation is CPU numerical / file prep / remote HTTP only."
+  },
+  "requires_gpu": [
+    {
+      "name": "generate_embeddings_with_state",
+      "module": "biomni.tool.genomics",
+      "why": "Docstring requires 10GB+ GPU for SE-600M; code checks torch.cuda and warns CPU is very slow; embedding forward pass sized for VRAM."
+    },
+    {
+      "name": "generate_transcriptformer_embeddings",
+      "module": "biomni.tool.genomics",
+      "why": "Default num_gpus=1 and precision 16-mixed; prints GPU requirement; inference CLI is multi-GPU oriented."
+    },
+    {
+      "name": "get_uce_embeddings_scRNA",
+      "module": "biomni.tool.genomics",
+      "why": "Runs UCE via Hugging Face Accelerate Accelerator; large single-cell foundation embedding model, not a CPU path in this wrapper."
+    },
+    {
+      "name": "create_scvi_embeddings_scRNA",
+      "module": "biomni.tool.genomics",
+      "why": "Trains scvi.model.SCVI then SCANVI (PyTorch Lightning). No CPU-only shortcut; training is the hot path."
+    },
+    {
+      "name": "unsupervised_celltype_transfer_between_scRNA_datasets",
+      "module": "biomni.tool.genomics",
+      "why": "Default SCANVI_POPV=True; popV annotate_data trains/uses scVI/scANVI-style models. Other flags (RF/SVM/CellTypist) can be CPU, but default path is GPU-oriented DL."
+    },
+    {
+      "name": "segment_with_nn_unet",
+      "module": "biomni.tool.bioimaging",
+      "why": "Calls nnunet.inference.predict.predict_from_folder with default model_type=3d_fullres and mixed_precision=True; torch-based 3D segmentation, practically GPU."
+    },
+    {
+      "name": "run_diffdock_with_smiles",
+      "module": "biomni.tool.pharmacology",
+      "why": "Default use_gpu=True; docker run --gpus device=N for DiffDock inference. use_gpu=False is possible but not the intended path."
+    },
+    {
+      "name": "annotate_celltype_with_panhumanpy",
+      "module": "biomni.tool.genomics",
+      "why": "Spawns panhumanpy_env and runs AzimuthNN (neural annotation + optional ANN embeddings). Separate conda env with DL stack; not a pure CPU numeric tool."
+    }
+  ],
+  "prefers_gpu": [
+    {
+      "name": "generate_gene_embeddings_with_ESM_models",
+      "module": "biomni.tool.genomics",
+      "why": "Loads fair-esm, device = cuda if available else cpu, tensors .to(device). Default esm2_t6_8M can run on CPU; larger ESM models in comments need high VRAM."
+    },
+    {
+      "name": "predict_admet_properties",
+      "module": "biomni.tool.pharmacology",
+      "why": "DeepPurpose CompoundPred pretrained models; library moves models to cuda when available, else CPU."
+    },
+    {
+      "name": "predict_binding_affinity_protein_1d_sequence",
+      "module": "biomni.tool.pharmacology",
+      "why": "DeepPurpose DTI pretrained models; same cuda-if-available behavior as ADMET."
+    },
+    {
+      "name": "query_chatnt",
+      "module": "biomni.tool.systems_biology",
+      "why": "transformers pipeline(InstaDeepAI/ChatNT); device default -1 (CPU), caller can pass a CUDA device id."
+    },
+    {
+      "name": "bayesian_finemapping_with_deep_vi",
+      "module": "biomni.tool.genetics",
+      "why": "Small custom torch.nn variational net trained in-process; no cuda selection, runs on default torch device (CPU unless global cuda tensors). Feasible on x86 CPU."
+    }
+  ],
+  "cpu_forced_or_default": [
+    {
+      "name": "segment_cells_with_deep_learning",
+      "module": "biomni.tool.microbiology",
+      "why": "CellposeModel(..., gpu=False) hardcoded — CPU only in this wrapper."
+    },
+    {
+      "name": "create_harmony_embeddings_scRNA",
+      "module": "biomni.tool.genomics",
+      "why": "Calls harmony.harmonize(...) without use_gpu=True; harmony-pytorch defaults use_gpu=False → CPU."
+    },
+    {
+      "name": "prepare_input_for_nnunet",
+      "module": "biomni.tool.bioimaging",
+      "why": "Only rearranges/prepares NIfTI folders for nnUNet; no model inference."
+    },
+    {
+      "name": "map_to_ima_interpret_scRNA",
+      "module": "biomni.tool.genomics",
+      "why": "sklearn NearestNeighbors on existing X_uce embeddings; requires prior UCE run, but this step itself is CPU."
+    }
+  ],
+  "not_gpu_false_positives": [
+    {
+      "name": "analyze_enzyme_kinetics_assay",
+      "module": "biomni.tool.biochemistry",
+      "why": "Curve fitting / dose-response numerics; no DL."
+    },
+    {
+      "name": "analyze_itc_binding_thermodynamics",
+      "module": "biomni.tool.biochemistry",
+      "why": "ITC thermodynamics numerics; no DL."
+    },
+    {
+      "name": "simulate_whole_cell_ode_model",
+      "module": "biomni.tool.bioengineering",
+      "why": "ODE integration; no DL."
+    },
+    {
+      "name": "predict_protein_disorder_regions",
+      "module": "biomni.tool.biophysics",
+      "why": "IUPred2A HTTP/local sequence scoring; not GPU."
+    },
+    {
+      "name": "perform_gene_expression_nmf_analysis",
+      "module": "biomni.tool.cancer_biology",
+      "why": "sklearn NMF; CPU."
+    },
+    {
+      "name": "analyze_copy_number_purity_ploidy_and_focal_events",
+      "module": "biomni.tool.cancer_biology",
+      "why": "CNVkit workflow; CPU."
+    },
+    {
+      "name": "query_jaspar",
+      "module": "biomni.tool.database",
+      "why": "REST query; remote HTTP only."
+    },
+    {
+      "name": "query_mpd",
+      "module": "biomni.tool.database",
+      "why": "REST query; remote HTTP only."
+    },
+    {
+      "name": "simulate_demographic_history",
+      "module": "biomni.tool.genetics",
+      "why": "msprime coalescent simulation; CPU."
+    },
+    {
+      "name": "predict_o_glycosylation_hotspots",
+      "module": "biomni.tool.glycoengineering",
+      "why": "Heuristic scoring; CPU."
+    },
+    {
+      "name": "advanced_web_search_claude",
+      "module": "biomni.tool.literature",
+      "why": "Anthropic web_search API; remote LLM, not local GPU compute."
+    },
+    {
+      "name": "simulate_generalized_lotka_volterra_dynamics",
+      "module": "biomni.tool.microbiology",
+      "why": "gLV ODE numerics; CPU."
+    },
+    {
+      "name": "predict_rna_secondary_structure",
+      "module": "biomni.tool.microbiology",
+      "why": "ViennaRNA; CPU."
+    },
+    {
+      "name": "perform_mwas_cyp2c19_metabolizer_status",
+      "module": "biomni.tool.pharmacology",
+      "why": "Stats / association on methylation tables; CPU."
+    },
+    {
+      "name": "find_roi_from_image",
+      "module": "biomni.tool.pharmacology",
+      "why": "Classical image/ROI processing; CPU."
+    },
+    {
+      "name": "reconstruct_3d_face_from_mri",
+      "module": "biomni.tool.physiology",
+      "why": "nibabel + SimpleITK + skimage marching cubes; CPU."
+    },
+    {
+      "name": "simulate_thyroid_hormone_pharmacokinetics",
+      "module": "biomni.tool.physiology",
+      "why": "PK compartment ODEs; CPU."
+    },
+    {
+      "name": "analyze_bacterial_growth_rate",
+      "module": "biomni.tool.synthetic_biology",
+      "why": "OD600 growth curve fitting; CPU."
+    },
+    {
+      "name": "create_biochemical_network_sbml_model",
+      "module": "biomni.tool.synthetic_biology",
+      "why": "SBML model construction; CPU."
+    },
+    {
+      "name": "perform_flux_balance_analysis",
+      "module": "biomni.tool.systems_biology",
+      "why": "COBRA/FBA LP; CPU."
+    },
+    {
+      "name": "simulate_metabolic_network_perturbation",
+      "module": "biomni.tool.systems_biology",
+      "why": "Kinetic ODE simulation; CPU."
+    }
+  ],
+  "scheduling_hint": {
+    "gpu_node": [
+      "generate_embeddings_with_state",
+      "generate_transcriptformer_embeddings",
+      "get_uce_embeddings_scRNA",
+      "create_scvi_embeddings_scRNA",
+      "unsupervised_celltype_transfer_between_scRNA_datasets",
+      "segment_with_nn_unet",
+      "run_diffdock_with_smiles",
+      "annotate_celltype_with_panhumanpy"
+    ],
+    "x86_cpu_ok_including_optional_dl": "All remaining MCP tools, plus prefers_gpu and cpu_forced_or_default lists above.",
+    "note": "If splitting pods: put requires_gpu on the aarch64/CUDA machine; run the rest on x86 without GPU. prefers_gpu can stay on x86 unless latency/VRAM becomes an issue (especially larger ESM models)."
+  }
+}

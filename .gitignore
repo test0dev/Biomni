@@ -248,3 +248,8 @@ platform/linux-arm/cli_install_report.json
 platform/validation/reports/
 platform/validation/fixtures/
 platform/validation/tags.json
+platform/mcp/node_modules/
+data/mcp_runtime/
+
+# Docker build cache (conda-pack tarball + context)
+platform/docker/.cache/
