@@ -87,11 +87,16 @@ Tool access inventory (static classification of the MCP/`module2api` surface):
 
 ## Docker multi-Pod
 
-Image packs `biomni_e1` + this repo into `/app`. Host only mounts the data lake read-only; per-user state is a Docker volume on `/app/tmp`.
+Conda / `biomni_e1` live **inside Docker** (base image). The host only needs Docker, downloads the **data lake**, and runs pods.
+
+| Image | Dockerfile | Contents |
+|-------|------------|----------|
+| `biomni-base:latest` | `platform/docker/Dockerfile.base` | Miniconda + `biomni_e1` + `platform/install.sh` |
+| `biomni-arm:latest` | `platform/docker/Dockerfile` | FROM base + app code + MCP entrypoint |
+
+Host **does not** need conda or `biomni_e1.tar.gz`. Data lake stays on the host and is mounted read-only at runtime.
 
 ### One-shot bootstrap (recommended)
-
-From a fresh clone, run the **repo-root** unified script (does **not** modify `platform/docker/build.sh`):
 
 ```bash
 bash bootstrap_docker.sh
@@ -99,28 +104,27 @@ bash bootstrap_docker.sh
 
 It will:
 
-1. Detect **arch** (`arm64` / `x86_64`), **NVIDIA GPU**, and **data lake** status
-2. Create `biomni_e1` if missing (`NON_INTERACTIVE=1 biomni_env/setup.sh` — can take hours)
-3. Run `platform/install.sh` with a profile (`arm64-gpu` / `arm64-cpu` / `x86_64-gpu` / `x86_64-cpu`)
-4. `conda-pack` → `platform/docker/.cache/biomni_e1.tar.gz`
-5. Call existing `platform/docker/build.sh`
-6. Print deploy tips (`run_pod_cpu` / `run_pod_gpu`, lake mount)
+1. Detect **arch** / **GPU** → `BUILD_PROFILE` (`arm64-gpu` / `arm64-cpu` / `x86_64-gpu` / `x86_64-cpu`)
+2. Ensure host **Docker** (and apt helpers); never installs host conda
+3. Download **data_lake** on the host (`platform/scripts/ensure_data_lake.sh`)
+4. Build `biomni-base` then `biomni-arm` via `platform/docker/build.sh` (first base build can take hours)
+5. Print `run_pod_*` commands — **does not start pods**
 
-Useful env vars: `AUTO_DOWNLOAD_LAKE` (default `1`), `FORCE_REPACK=1`, `SKIP_ENV_SETUP=1`, `SKIP_PLATFORM_INSTALL=1`, `SKIP_DOCKER_BUILD=1`, `SKIP_DISK_CHECK=1`, `IMAGE_TAG`.
+Useful env vars: `AUTO_DOWNLOAD_LAKE` (default `1`), `SKIP_LAKE=1`, `SKIP_DOCKER_BUILD=1`, `SKIP_BASE_BUILD=1`, `SKIP_DISK_CHECK=1`, `BUILD_PROFILE`, `IMAGE_TAG`, `BIOMNI_BASE_TAG`.
 
-Lake-only helper: `bash platform/scripts/ensure_data_lake.sh` (or `--probe`).
+Lake-only: `bash platform/scripts/ensure_data_lake.sh` (or `--probe`).
 
-### Run pods
+### Run pods (you start them)
 
 ```bash
-# lake: prefer /data/lake; otherwise ~/biomni-data-lake (or BIOMNI_LAKE_HOST=...)
-bash platform/docker/run_pod_cpu.sh userA       # no --gpus; profile=cpu
-bash platform/docker/run_pod_gpu.sh userB       # --gpus all; profile=gpu
+# lake: BIOMNI_LAKE_HOST or /data/lake or ~/biomni-data-lake
+BIOMNI_LAKE_HOST=/path/to/lake bash platform/docker/run_pod_cpu.sh userA
+BIOMNI_LAKE_HOST=/path/to/lake bash platform/docker/run_pod_gpu.sh userB
 
-# Or full tool surface (legacy):
-bash platform/docker/run_pod.sh userC           # --gpus all; profile=all
+# Or full tool surface:
+bash platform/docker/run_pod.sh userC
 ```
 
-Ports are in 5000–6000. Omit the port to take max(used)+1. `run_pod_gpu.sh` / default `run_pod.sh` use `--gpus all` with no CPU/memory caps; `run_pod_cpu.sh` omits GPU devices.
+Ports are in 5000–6000. Omit the port to take max(used)+1. `run_pod_gpu.sh` / default `run_pod.sh` use `--gpus all`; `run_pod_cpu.sh` omits GPU devices.
 
-Advanced: if the pack already exists, you may still call `bash platform/docker/build.sh` directly.
+Rebuild images only: `BUILD_PROFILE=x86_64-cpu bash platform/docker/build.sh` (or `SKIP_BASE_BUILD=1` to refresh runtime only).

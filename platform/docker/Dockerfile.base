@@ -1,0 +1,67 @@
+# Biomni base image: Miniconda + biomni_e1 + platform CLI (no app runtime entrypoint).
+# Built by platform/docker/build.sh (context contains ./app from the repo).
+# Build-arg BUILD_PROFILE: arm64-gpu | arm64-cpu | x86_64-gpu | x86_64-cpu
+FROM nvidia/cuda:12.6.0-base-ubuntu22.04
+
+ARG TARGETARCH
+ARG BUILD_PROFILE=x86_64-cpu
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        bash \
+        ca-certificates \
+        curl \
+        wget \
+        bzip2 \
+        git \
+        rsync \
+        jq \
+        build-essential \
+        cmake \
+        tini \
+    && rm -rf /var/lib/apt/lists/*
+
+# Miniconda into /opt/conda (arch from Docker TARGETARCH).
+RUN set -eux; \
+    case "${TARGETARCH}" in \
+      amd64) MC_ARCH=x86_64 ;; \
+      arm64) MC_ARCH=aarch64 ;; \
+      *) echo "unsupported TARGETARCH=${TARGETARCH}" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${MC_ARCH}.sh" -o /tmp/miniconda.sh; \
+    bash /tmp/miniconda.sh -b -p /opt/conda; \
+    rm -f /tmp/miniconda.sh; \
+    /opt/conda/bin/conda clean -afy
+
+ENV PATH=/opt/conda/bin:/opt/conda/envs/biomni_e1/bin:$PATH \
+    CONDA_PREFIX=/opt/conda/envs/biomni_e1 \
+    NON_INTERACTIVE=1 \
+    BUILD_PROFILE=${BUILD_PROFILE} \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# --- expensive, cache-friendly: conda E1 env ---
+COPY app/biomni_env /app/biomni_env
+RUN cd /app/biomni_env && bash setup.sh
+
+# --- platform layer (CLI + torch policy) ---
+COPY app/pyproject.toml app/README.md app/LICENSE /app/
+COPY app/biomni /app/biomni
+COPY app/platform /app/platform
+
+RUN set -eux; \
+    # shellcheck disable=SC1091 \
+    eval "$(/opt/conda/bin/conda shell.bash hook)"; \
+    conda activate biomni_e1; \
+    case "${BUILD_PROFILE}" in \
+      arm64-cpu) export BIOMNI_SKIP_CUDA_TORCH=1 ;; \
+      *) unset BIOMNI_SKIP_CUDA_TORCH || true ;; \
+    esac; \
+    bash /app/platform/install.sh; \
+    ln -sfn /opt/conda/envs/biomni_e1/bin/python /usr/local/bin/python; \
+    ln -sfn /opt/conda/envs/biomni_e1/bin/python3 /usr/local/bin/python3
+
+ENV PATH=/opt/conda/envs/biomni_e1/bin:/app/platform/biomni_tools/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    CONDA_PREFIX=/opt/conda/envs/biomni_e1 \
+    PYTHONPATH=/app/platform:/app
