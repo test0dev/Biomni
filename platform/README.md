@@ -89,14 +89,31 @@ Tool access inventory (static classification of the MCP/`module2api` surface):
 
 Image packs `biomni_e1` + this repo into `/app`. Host only mounts the data lake read-only; per-user state is a Docker volume on `/app/tmp`.
 
-```bash
-# once: pack env + build (needs conda-pack on the host)
-conda-pack -n biomni_e1 -o platform/docker/.cache/biomni_e1.tar.gz \
-  --n-threads -1 --ignore-editable-packages --ignore-missing-files
-bash platform/docker/build.sh
+### One-shot bootstrap (recommended)
 
+From a fresh clone, run the **repo-root** unified script (does **not** modify `platform/docker/build.sh`):
+
+```bash
+bash bootstrap_docker.sh
+```
+
+It will:
+
+1. Detect **arch** (`arm64` / `x86_64`), **NVIDIA GPU**, and **data lake** status
+2. Create `biomni_e1` if missing (`NON_INTERACTIVE=1 biomni_env/setup.sh` — can take hours)
+3. Run `platform/install.sh` with a profile (`arm64-gpu` / `arm64-cpu` / `x86_64-gpu` / `x86_64-cpu`)
+4. `conda-pack` → `platform/docker/.cache/biomni_e1.tar.gz`
+5. Call existing `platform/docker/build.sh`
+6. Print deploy tips (`run_pod_cpu` / `run_pod_gpu`, lake mount)
+
+Useful env vars: `AUTO_DOWNLOAD_LAKE` (default `1`), `FORCE_REPACK=1`, `SKIP_ENV_SETUP=1`, `SKIP_PLATFORM_INSTALL=1`, `SKIP_DOCKER_BUILD=1`, `SKIP_DISK_CHECK=1`, `IMAGE_TAG`.
+
+Lake-only helper: `bash platform/scripts/ensure_data_lake.sh` (or `--probe`).
+
+### Run pods
+
+```bash
 # lake: prefer /data/lake; otherwise ~/biomni-data-lake (or BIOMNI_LAKE_HOST=...)
-# Split across hosts: x86 without GPU tools vs CUDA with GPU-only tools
 bash platform/docker/run_pod_cpu.sh userA       # no --gpus; profile=cpu
 bash platform/docker/run_pod_gpu.sh userB       # --gpus all; profile=gpu
 
@@ -105,3 +122,5 @@ bash platform/docker/run_pod.sh userC           # --gpus all; profile=all
 ```
 
 Ports are in 5000–6000. Omit the port to take max(used)+1. `run_pod_gpu.sh` / default `run_pod.sh` use `--gpus all` with no CPU/memory caps; `run_pod_cpu.sh` omits GPU devices.
+
+Advanced: if the pack already exists, you may still call `bash platform/docker/build.sh` directly.

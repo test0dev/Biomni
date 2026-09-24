@@ -25,6 +25,7 @@ python -c "import mcp" 2>/dev/null || pip install 'mcp' || true
 python -c "import fastmcp" 2>/dev/null || pip install 'fastmcp' || true
 
 # GPU: need CUDA-enabled torch on aarch64 (GB10 / CUDA 13). CPU wheels fail L3.
+# Set BIOMNI_SKIP_CUDA_TORCH=1 on arm64 hosts without NVIDIA GPU (CPU-only pods).
 ensure_cuda_torch() {
   local need_cuda=0
   if ! python - <<'PY'
@@ -47,7 +48,11 @@ PY
     log_ok "torch CUDA already available"
   fi
 }
-ensure_cuda_torch
+if [[ "${BIOMNI_SKIP_CUDA_TORCH:-0}" == "1" ]]; then
+  log_warn "BIOMNI_SKIP_CUDA_TORCH=1 — skipping CUDA torch install"
+else
+  ensure_cuda_torch
+fi
 
 # Ensure jq for config installer
 if ! command -v jq &>/dev/null; then
