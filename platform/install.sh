@@ -20,15 +20,19 @@ fi
 
 case "$PLATFORM" in
   linux-arm)
-    log_info "dispatch → linux-arm (compatible + validate on this host)"
+    log_info "dispatch → linux-arm"
     bash "$PLATFORM_DIR/linux-arm/setup.sh"
     ;;
   linux-x86)
-    log_info "dispatch → linux-x86 (default upstream path; not validated on arm64 hosts)"
+    log_info "dispatch → linux-x86"
     bash "$PLATFORM_DIR/linux-x86/setup.sh"
     ;;
+  macos-arm)
+    log_info "dispatch → macos-arm (native host; Docker pods still use linux/arm64 images)"
+    bash "$PLATFORM_DIR/macos-arm/setup.sh"
+    ;;
   *)
-    die "unsupported platform (os=$(uname -s) arch=$(uname -m)). This release supports linux-arm and linux-x86 only."
+    die "unsupported platform (os=$(uname -s) arch=$(uname -m)). Supported: linux-arm, linux-x86, macos-arm."
     ;;
 esac
 

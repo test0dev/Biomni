@@ -58,6 +58,7 @@ detect_platform() {
   case "${os}:${arch}" in
     Linux:aarch64|Linux:arm64) echo "linux-arm" ;;
     Linux:x86_64|Linux:amd64)  echo "linux-x86" ;;
+    Darwin:arm64|Darwin:aarch64) echo "macos-arm" ;;
     *) echo "unsupported" ;;
   esac
 }
@@ -66,6 +67,7 @@ config_for_platform() {
   case "$1" in
     linux-arm) echo "$PLATFORM_CONFIGS/cli_tools_config_linux_aarch64.json" ;;
     linux-x86) echo "$PLATFORM_CONFIGS/cli_tools_config_linux_x86_64.json" ;;
+    macos-arm) echo "$PLATFORM_CONFIGS/cli_tools_config_macos_arm64.json" ;;
     *) die "no CLI config for platform: $1" ;;
   esac
 }

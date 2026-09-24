@@ -1,6 +1,6 @@
 # Biomni platform (additive)
 
-Extra install / validation layer for **linux-arm** and **linux-x86**.  
+Extra install / validation layer for **linux-arm**, **linux-x86**, and **macos-arm**.  
 Does **not** modify upstream `biomni_env/` or `biomni/` files.
 
 ## Entry
@@ -10,12 +10,13 @@ cd biomni-arm
 bash platform/install.sh
 ```
 
-`install.sh` uses `uname -s` / `uname -m`:
+`install.sh` uses `uname -s` / `uname -m` (host wins; no cross-arch gates):
 
 | OS | Arch | Branch |
 |---|---|---|
-| Linux | aarch64 / arm64 | `linux-arm` (install + validate here) |
-| Linux | x86_64 / amd64 | `linux-x86` (skeleton; not run on arm64 hosts) |
+| Linux | aarch64 / arm64 | `linux-arm` |
+| Linux | x86_64 / amd64 | `linux-x86` |
+| Darwin | arm64 | `macos-arm` (native; Docker pods still use `linux/arm64` images) |
 | other | — | error |
 
 Optional override (debug only): `BIOMNI_PLATFORM=linux-arm bash platform/install.sh`
@@ -96,6 +97,16 @@ Conda / `biomni_e1` live **inside Docker** (base image). The host only needs Doc
 
 Host **does not** need conda or `biomni_e1.tar.gz`. Data lake stays on the host and is mounted read-only at runtime.
 
+**Packaging follows the host** (`uname -s` / `uname -m`), with no mismatch gates:
+
+| Host | `docker --platform` | In-image `BIOMNI_PLATFORM` |
+|------|---------------------|----------------------------|
+| Linux x86_64 | `linux/amd64` | `linux-x86` |
+| Linux aarch64 / arm64 | `linux/arm64` | `linux-arm` |
+| macOS arm64 | `linux/arm64` | `linux-arm` (container is Linux) |
+
+`BUILD_PROFILE` (`*-gpu` / `*-cpu`) is derived from host GPU detection (`BIOMNI_FORCE_CPU=1` forces CPU). Do not use it to select architecture.
+
 ### One-shot bootstrap (recommended)
 
 ```bash
@@ -104,13 +115,13 @@ bash bootstrap_docker.sh
 
 It will:
 
-1. Detect **arch** / **GPU** → `BUILD_PROFILE` (`arm64-gpu` / `arm64-cpu` / `x86_64-gpu` / `x86_64-cpu`)
+1. Detect **host OS/arch** / **GPU** → packaging target + `BUILD_PROFILE` (`*-gpu` / `*-cpu`)
 2. Ensure host **Docker** (and apt helpers); never installs host conda
 3. Download **data_lake** on the host (`platform/scripts/ensure_data_lake.sh`)
 4. Build `biomni-base` then `biomni-arm` via `platform/docker/build.sh` (first base build can take hours)
 5. Print `run_pod_*` commands — **does not start pods**
 
-Useful env vars: `AUTO_DOWNLOAD_LAKE` (default `1`), `SKIP_LAKE=1`, `SKIP_DOCKER_BUILD=1`, `SKIP_BASE_BUILD=1`, `SKIP_DISK_CHECK=1`, `BUILD_PROFILE`, `IMAGE_TAG`, `BIOMNI_BASE_TAG`.
+Useful env vars: `AUTO_DOWNLOAD_LAKE` (default `1`), `SKIP_LAKE=1`, `SKIP_DOCKER_BUILD=1`, `SKIP_BASE_BUILD=1`, `SKIP_DISK_CHECK=1`, `BIOMNI_FORCE_CPU=1`, `IMAGE_TAG`, `BIOMNI_BASE_TAG`.
 
 Lake-only: `bash platform/scripts/ensure_data_lake.sh` (or `--probe`).
 
@@ -127,4 +138,10 @@ bash platform/docker/run_pod.sh userC
 
 Ports are in 5000–6000. Omit the port to take max(used)+1. `run_pod_gpu.sh` / default `run_pod.sh` use `--gpus all`; `run_pod_cpu.sh` omits GPU devices.
 
-Rebuild images only: `BUILD_PROFILE=x86_64-cpu bash platform/docker/build.sh` (or `SKIP_BASE_BUILD=1` to refresh runtime only).
+Rebuild images only (always packs for **this** host):
+
+```bash
+bash platform/docker/build.sh
+# force CPU torch policy: BIOMNI_FORCE_CPU=1 bash platform/docker/build.sh
+# runtime only: SKIP_BASE_BUILD=1 bash platform/docker/build.sh
+```

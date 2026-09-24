@@ -1,0 +1,31 @@
+{
+  "platform": "macos_arm64",
+  "description": "Native macOS arm64 CLI plan. Prefer conda packages; many Linux-only binaries are skipped. Docker pods on this host use linux/arm64 images.",
+  "tools": [
+    {
+      "name": "MUSCLE",
+      "binary": "muscle",
+      "method": "conda",
+      "packages": ["muscle"],
+      "channels": ["bioconda", "conda-forge"],
+      "version_args": ["-version"]
+    },
+    {
+      "name": "IQ-TREE",
+      "binary": "iqtree",
+      "aliases": ["iqtree2"],
+      "method": "conda",
+      "packages": ["iqtree"],
+      "channels": ["bioconda", "conda-forge"],
+      "version_args": ["--version"]
+    },
+    {
+      "name": "BWA",
+      "binary": "bwa",
+      "method": "conda",
+      "packages": ["bwa"],
+      "channels": ["bioconda", "conda-forge"],
+      "version_args": []
+    }
+  ]
+}

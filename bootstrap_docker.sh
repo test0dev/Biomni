@@ -14,7 +14,7 @@
 #   SKIP_LAKE=1
 #   SKIP_DOCKER_BUILD=1
 #   SKIP_BASE_BUILD=1        passed to build.sh
-#   BUILD_PROFILE=...        override auto detect
+#   BIOMNI_FORCE_CPU=1       force *-cpu profile (arch still from host)
 #   IMAGE_TAG / BIOMNI_BASE_TAG
 #   BIOMNI_DATA_LAKE_PATH / BIOMNI_LAKE_HOST
 set -euo pipefail
@@ -38,6 +38,15 @@ log_ok()    { echo -e "${GREEN}[ok]${NC} $*"; }
 log_warn()  { echo -e "${YELLOW}[warn]${NC} $*"; }
 log_err()   { echo -e "${RED}[error]${NC} $*" >&2; }
 die()       { log_err "$*"; exit 1; }
+
+detect_host_kind() {
+  case "$(uname -s):$(uname -m)" in
+    Linux:x86_64 | Linux:amd64) echo linux-x86 ;;
+    Linux:aarch64 | Linux:arm64) echo linux-arm ;;
+    Darwin:arm64 | Darwin:aarch64) echo macos-arm ;;
+    *) die "unsupported host $(uname -s)/$(uname -m) (need Linux x86_64, Linux arm64, or macOS arm64)" ;;
+  esac
+}
 
 detect_arch() {
   case "$(uname -m)" in
@@ -72,13 +81,12 @@ gpu_label() {
 }
 
 select_profile() {
-  case "${HOST_ARCH}:${HOST_GPU}" in
-    arm64:yes)   echo arm64-gpu ;;
-    arm64:no)    echo arm64-cpu ;;
-    x86_64:yes)  echo x86_64-gpu ;;
-    x86_64:no)   echo x86_64-cpu ;;
-    *) die "cannot select BUILD_PROFILE for ${HOST_ARCH}/${HOST_GPU}" ;;
-  esac
+  # Arch always from host; GPU/CPU only.
+  if [[ "${BIOMNI_FORCE_CPU:-0}" == "1" || "${HOST_GPU}" != "yes" ]]; then
+    echo "${HOST_ARCH}-cpu"
+  else
+    echo "${HOST_ARCH}-gpu"
+  fi
 }
 
 check_disk() {
@@ -116,6 +124,7 @@ probe_lake() {
 print_result_tips() {
   echo
   echo "=== Bootstrap result ==="
+  echo "  host kind:     ${HOST_KIND}"
   echo "  BUILD_PROFILE: ${BUILD_PROFILE}"
   echo "  arch:          ${HOST_ARCH}"
   echo "  gpu:           $(gpu_label)"
@@ -139,14 +148,16 @@ print_result_tips() {
 }
 
 # --- main ---
+HOST_KIND="$(detect_host_kind)"
 HOST_ARCH="$(detect_arch)"
 HOST_GPU="$(detect_gpu)"
-BUILD_PROFILE="${BUILD_PROFILE:-$(select_profile)}"
+BUILD_PROFILE="$(select_profile)"
 
 echo "=== Host profile ==="
+echo "  kind:  ${HOST_KIND}"
 echo "  arch:  $(uname -m) (${HOST_ARCH})"
 echo "  gpu:   $(gpu_label)"
-echo "  build: ${BUILD_PROFILE}"
+echo "  build: ${BUILD_PROFILE} (arch from host; GPU/CPU only)"
 
 check_disk
 
@@ -161,10 +172,10 @@ echo
 if [[ "${SKIP_DOCKER_BUILD:-0}" == "1" ]]; then
   log_warn "SKIP_DOCKER_BUILD=1 — skipping image build"
 else
-  log_info "building images (conda/E1 inside Docker base — may take hours on first run)"
-  BUILD_PROFILE="${BUILD_PROFILE}" \
-    IMAGE_TAG="${IMAGE_TAG}" \
+  log_info "building images for host ${HOST_KIND} (conda/E1 inside Docker base — may take hours on first run)"
+  IMAGE_TAG="${IMAGE_TAG}" \
     BIOMNI_BASE_TAG="${BIOMNI_BASE_TAG}" \
+    BIOMNI_FORCE_CPU="${BIOMNI_FORCE_CPU:-0}" \
     SKIP_BASE_BUILD="${SKIP_BASE_BUILD:-0}" \
     bash "${REPO_ROOT}/platform/docker/build.sh"
 fi

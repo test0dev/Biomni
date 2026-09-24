@@ -1,10 +1,22 @@
 # Biomni base image: Miniconda + biomni_e1 + platform CLI (no app runtime entrypoint).
 # Built by platform/docker/build.sh (context contains ./app from the repo).
-# Build-arg BUILD_PROFILE: arm64-gpu | arm64-cpu | x86_64-gpu | x86_64-cpu
+#
+# Packaging follows the *build host* via docker --platform (set by build.sh):
+#   linux/amd64 → Miniconda x86_64 + BIOMNI_PLATFORM=linux-x86
+#   linux/arm64 → Miniconda aarch64 + BIOMNI_PLATFORM=linux-arm
+# (macOS arm64 hosts build linux/arm64 images; containers are always Linux.)
+#
+# Build-args:
+#   BUILD_PROFILE    arm64-gpu|arm64-cpu|x86_64-gpu|x86_64-cpu  (GPU torch policy)
+#   BIOMNI_PLATFORM  linux-arm|linux-x86  (from host; default derived from TARGETARCH)
 FROM nvidia/cuda:12.6.0-base-ubuntu22.04
+
+# conda activate needs bash; default /bin/sh breaks the install RUN.
+SHELL ["/bin/bash", "-c"]
 
 ARG TARGETARCH
 ARG BUILD_PROFILE=x86_64-cpu
+ARG BIOMNI_PLATFORM=
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -21,7 +33,7 @@ RUN apt-get update \
         tini \
     && rm -rf /var/lib/apt/lists/*
 
-# Miniconda into /opt/conda (arch from Docker TARGETARCH).
+# Miniconda into /opt/conda — arch from Docker TARGETARCH (host-driven --platform).
 RUN set -eux; \
     case "${TARGETARCH}" in \
       amd64) MC_ARCH=x86_64 ;; \
@@ -31,6 +43,8 @@ RUN set -eux; \
     curl -fsSL "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${MC_ARCH}.sh" -o /tmp/miniconda.sh; \
     bash /tmp/miniconda.sh -b -p /opt/conda; \
     rm -f /tmp/miniconda.sh; \
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main; \
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r; \
     /opt/conda/bin/conda clean -afy
 
 ENV PATH=/opt/conda/bin:/opt/conda/envs/biomni_e1/bin:$PATH \
@@ -43,7 +57,10 @@ WORKDIR /app
 
 # --- expensive, cache-friendly: conda E1 env ---
 COPY app/biomni_env /app/biomni_env
-RUN cd /app/biomni_env && bash setup.sh
+RUN set -eux; \
+    cd /app/biomni_env && bash setup.sh; \
+    /opt/conda/bin/conda env list | grep -qE '^biomni_e1[[:space:]]' \
+      || { echo "error: biomni_e1 was not created by setup.sh" >&2; exit 1; }
 
 # --- platform layer (CLI + torch policy) ---
 COPY app/pyproject.toml app/README.md app/LICENSE /app/
@@ -51,13 +68,25 @@ COPY app/biomni /app/biomni
 COPY app/platform /app/platform
 
 RUN set -eux; \
-    # shellcheck disable=SC1091 \
     eval "$(/opt/conda/bin/conda shell.bash hook)"; \
     conda activate biomni_e1; \
+    # Platform from build-arg, else TARGETARCH (always Linux inside the image).
+    if [[ -n "${BIOMNI_PLATFORM}" ]]; then \
+      export BIOMNI_PLATFORM; \
+    else \
+      case "${TARGETARCH}" in \
+        arm64) export BIOMNI_PLATFORM=linux-arm ;; \
+        amd64) export BIOMNI_PLATFORM=linux-x86 ;; \
+        *) echo "unsupported TARGETARCH=${TARGETARCH}" >&2; exit 1 ;; \
+      esac; \
+    fi; \
     case "${BUILD_PROFILE}" in \
-      arm64-cpu) export BIOMNI_SKIP_CUDA_TORCH=1 ;; \
-      *) unset BIOMNI_SKIP_CUDA_TORCH || true ;; \
+      arm64-cpu|x86_64-cpu) export BIOMNI_SKIP_CUDA_TORCH=1 ;; \
+      arm64-gpu|x86_64-gpu) unset BIOMNI_SKIP_CUDA_TORCH || true ;; \
+      *) \
+        echo "warn: unknown BUILD_PROFILE=${BUILD_PROFILE}; leaving CUDA torch policy unset" >&2 ;; \
     esac; \
+    echo "==> TARGETARCH=${TARGETARCH} BIOMNI_PLATFORM=${BIOMNI_PLATFORM} BUILD_PROFILE=${BUILD_PROFILE} BIOMNI_SKIP_CUDA_TORCH=${BIOMNI_SKIP_CUDA_TORCH:-unset}"; \
     bash /app/platform/install.sh; \
     ln -sfn /opt/conda/envs/biomni_e1/bin/python /usr/local/bin/python; \
     ln -sfn /opt/conda/envs/biomni_e1/bin/python3 /usr/local/bin/python3

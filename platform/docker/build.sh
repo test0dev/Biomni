@@ -2,11 +2,18 @@
 # Build biomni-base (conda/E1 in-image) then biomni-arm runtime (app + entrypoint).
 # No host biomni_e1.tar.gz required.
 #
+# Packaging ALWAYS follows the host OS/arch (no cross-arch / mismatch gates):
+#   Linux x86_64     → docker linux/amd64  + BIOMNI_PLATFORM=linux-x86
+#   Linux aarch64    → docker linux/arm64  + BIOMNI_PLATFORM=linux-arm
+#   macOS arm64      → docker linux/arm64  + BIOMNI_PLATFORM=linux-arm
+#                      (container is Linux; host kind logged as macos-arm)
+#
 # Env:
 #   IMAGE_TAG          default biomni-arm:latest
 #   BIOMNI_BASE_TAG    default biomni-base:latest
-#   BUILD_PROFILE      arm64-gpu|arm64-cpu|x86_64-gpu|x86_64-cpu
+#   BIOMNI_FORCE_CPU=1 force *-cpu profile (skip CUDA torch policy)
 #   SKIP_BASE_BUILD=1  only rebuild runtime
+#   BUILD_PROFILE      ignored if set — kept for compat log only; host wins
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -15,32 +22,51 @@ CACHE_DIR="${SCRIPT_DIR}/.cache"
 CTX_DIR="${CACHE_DIR}/context"
 IMAGE_TAG="${IMAGE_TAG:-biomni-arm:latest}"
 BIOMNI_BASE_TAG="${BIOMNI_BASE_TAG:-biomni-base:latest}"
-BUILD_PROFILE="${BUILD_PROFILE:-}"
 
-if [[ -z "${BUILD_PROFILE}" ]]; then
-  case "$(uname -m)" in
-    aarch64 | arm64)
-      if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi -L 2>/dev/null | grep -qi GPU; then
-        BUILD_PROFILE=arm64-gpu
-      else
-        BUILD_PROFILE=arm64-cpu
-      fi
-      ;;
-    x86_64 | amd64)
-      if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi -L 2>/dev/null | grep -qi GPU; then
-        BUILD_PROFILE=x86_64-gpu
-      else
-        BUILD_PROFILE=x86_64-cpu
-      fi
-      ;;
-    *)
-      echo "error: unsupported arch $(uname -m)" >&2
-      exit 1
-      ;;
-  esac
+HOST_OS="$(uname -s)"
+HOST_ARCH="$(uname -m)"
+
+# Host → packaging target (explicit; no override by BUILD_PROFILE).
+case "${HOST_OS}:${HOST_ARCH}" in
+  Linux:x86_64 | Linux:amd64)
+    HOST_KIND=linux-x86
+    DOCKER_PLATFORM=linux/amd64
+    BIOMNI_PLATFORM=linux-x86
+    ARCH_PREFIX=x86_64
+    ;;
+  Linux:aarch64 | Linux:arm64)
+    HOST_KIND=linux-arm
+    DOCKER_PLATFORM=linux/arm64
+    BIOMNI_PLATFORM=linux-arm
+    ARCH_PREFIX=arm64
+    ;;
+  Darwin:arm64 | Darwin:aarch64)
+    HOST_KIND=macos-arm
+    # Docker Desktop on Apple Silicon builds Linux arm64 images.
+    DOCKER_PLATFORM=linux/arm64
+    BIOMNI_PLATFORM=linux-arm
+    ARCH_PREFIX=arm64
+    ;;
+  *)
+    echo "error: unsupported host ${HOST_OS}/${HOST_ARCH}" >&2
+    echo "supported: Linux x86_64, Linux aarch64/arm64, Darwin arm64" >&2
+    exit 1
+    ;;
+esac
+
+has_gpu=no
+if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi -L 2>/dev/null | grep -qi GPU; then
+  has_gpu=yes
 fi
 
-echo "==> BUILD_PROFILE=${BUILD_PROFILE}"
+if [[ "${BIOMNI_FORCE_CPU:-0}" == "1" || "${has_gpu}" != "yes" ]]; then
+  BUILD_PROFILE="${ARCH_PREFIX}-cpu"
+else
+  BUILD_PROFILE="${ARCH_PREFIX}-gpu"
+fi
+
+echo "==> host=${HOST_OS}/${HOST_ARCH} kind=${HOST_KIND}"
+echo "==> pack docker_platform=${DOCKER_PLATFORM} BIOMNI_PLATFORM=${BIOMNI_PLATFORM} BUILD_PROFILE=${BUILD_PROFILE} gpu=${has_gpu}"
 echo "==> preparing build context in ${CTX_DIR}"
 rm -rf "${CTX_DIR}"
 mkdir -p "${CTX_DIR}/app"
@@ -65,21 +91,24 @@ cp -a "${SCRIPT_DIR}/Dockerfile" "${CTX_DIR}/Dockerfile"
 cp -a "${SCRIPT_DIR}/entrypoint.sh" "${CTX_DIR}/entrypoint.sh"
 
 if [[ "${SKIP_BASE_BUILD:-0}" != "1" ]]; then
-  echo "==> docker build base ${BIOMNI_BASE_TAG}"
+  echo "==> docker build base ${BIOMNI_BASE_TAG} (--platform ${DOCKER_PLATFORM})"
   docker build \
+    --platform "${DOCKER_PLATFORM}" \
     -t "${BIOMNI_BASE_TAG}" \
     -f "${CTX_DIR}/Dockerfile.base" \
     --build-arg "BUILD_PROFILE=${BUILD_PROFILE}" \
+    --build-arg "BIOMNI_PLATFORM=${BIOMNI_PLATFORM}" \
     "${CTX_DIR}"
 else
   echo "==> SKIP_BASE_BUILD=1 — reusing ${BIOMNI_BASE_TAG}"
 fi
 
-echo "==> docker build runtime ${IMAGE_TAG} (FROM ${BIOMNI_BASE_TAG})"
+echo "==> docker build runtime ${IMAGE_TAG} (FROM ${BIOMNI_BASE_TAG}, --platform ${DOCKER_PLATFORM})"
 docker build \
+  --platform "${DOCKER_PLATFORM}" \
   -t "${IMAGE_TAG}" \
   -f "${CTX_DIR}/Dockerfile" \
   --build-arg "BASE_IMAGE=${BIOMNI_BASE_TAG}" \
   "${CTX_DIR}"
 
-echo "==> done: base=${BIOMNI_BASE_TAG} runtime=${IMAGE_TAG}"
+echo "==> done: host_kind=${HOST_KIND} base=${BIOMNI_BASE_TAG} runtime=${IMAGE_TAG} platform=${DOCKER_PLATFORM}"
